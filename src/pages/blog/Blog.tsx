@@ -1,6 +1,6 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 
-function Blog(): ReactElement {
+function Blog() {
   return <div>Blog</div>;
 }
 

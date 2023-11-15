@@ -8,6 +8,8 @@ export const globalCss = css`
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    padding: 0;
+    margin: 0;
   }
 
   html {

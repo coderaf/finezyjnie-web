@@ -1,6 +1,6 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 
-function Contact(): ReactElement {
+function Contact() {
   return <div>Contact</div>;
 }
 

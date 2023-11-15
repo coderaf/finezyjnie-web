@@ -1,8 +1,8 @@
 const appPathConstants = {
   HOME: '/',
-  SHOP: '/shop',
+  SHOP: '/sklep',
   BLOG: '/blog',
-  CONTACT: '/contact',
+  CONTACT: '/kontakt',
 };
 
 type PathConstantsType = Record<keyof typeof appPathConstants, string>;

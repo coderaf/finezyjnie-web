@@ -1,9 +1,9 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 import { Outlet } from 'react-router-dom';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 
-function Layout(): ReactElement {
+function Layout() {
   return (
     <>
       <Header />
