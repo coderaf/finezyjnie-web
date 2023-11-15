@@ -8,6 +8,8 @@ export const globalCss = css`
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    padding: 0;
+    margin: 0;
   }
 
   html {
@@ -20,5 +22,14 @@ export const globalCss = css`
   textarea:focus,
   textarea:focus-visible {
     outline: none;
+  }
+
+  li {
+    list-style: none;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
   }
 `;
