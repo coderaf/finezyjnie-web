@@ -21,4 +21,13 @@ export const globalCss = css`
   textarea:focus-visible {
     outline: none;
   }
+
+  li {
+    list-style: none;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 `;
