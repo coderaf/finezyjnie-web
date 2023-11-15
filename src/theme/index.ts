@@ -1,10 +1,5 @@
 import { colors } from './colors';
-import { WebDimensions } from '@emotion/react';
-
-export const webDimensions: WebDimensions = {
-  maxPageWidth: 1440,
-  navHeight: 64,
-};
+import { webDimensions } from './webDimensions';
 
 export const webTheme = {
   colors,
