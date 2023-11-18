@@ -1,7 +1,12 @@
 import React from 'react';
+import UpdatesAndBio from './components/UpdatesAndBio';
 
 function Home() {
-  return <div>Home</div>;
+  return (
+    <>
+      <UpdatesAndBio />
+    </>
+  );
 }
 
 export default Home;

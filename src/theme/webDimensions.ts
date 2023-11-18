@@ -1,7 +1,7 @@
 import { WebDimensions } from '@emotion/react';
 
 const appDimensions: WebDimensions = {
-  maxPageWidth: 1440,
+  maxPageWidth: 1280,
   navHeight: 64,
   menuWidth: 800,
 };

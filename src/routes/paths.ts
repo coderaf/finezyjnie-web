@@ -7,4 +7,4 @@ const appPathConstants = {
 
 type PathConstantsType = Record<keyof typeof appPathConstants, string>;
 
-export const PathConstants: PathConstantsType = appPathConstants;
+export const PATHS: PathConstantsType = appPathConstants;

@@ -6,6 +6,10 @@ import { globalCss } from './styles/globalCss';
 import Layout from './components/Layout/Layout';
 import routes from './routes';
 import ErrorPage from './pages/error-page/ErrorPage';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const router = createBrowserRouter([
@@ -16,11 +20,17 @@ function App() {
     },
   ]);
 
+  const queryClient = new QueryClient();
+
   return (
-    <ThemeProvider theme={webTheme}>
-      <Global styles={globalCss} />
-      <RouterProvider router={router} />
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider theme={webTheme}>
+        <Global styles={globalCss} />
+        <ToastContainer />
+        <RouterProvider router={router} />
+      </ThemeProvider>
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
   );
 }
 
