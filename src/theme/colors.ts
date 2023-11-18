@@ -6,7 +6,9 @@ const appColors = {
   success: '#2FFD8E',
   link: '#2522BA',
   transparent: 'transparent',
-  bgSection: '#41735D',
+  main: '#498468',
+  secondary: '#8eceae',
+  bgSection: '#3e765c',
 };
 
 type ColorsType = Record<keyof typeof appColors, string>;

@@ -1,7 +1,7 @@
 import React from 'react';
 import * as styles from './Navbar.styles';
 import { NavLink } from 'react-router-dom';
-import { PathConstants } from '../../routes/pathConstants';
+import { PATHS } from '../../routes/paths';
 import { colors } from '../../theme/colors';
 
 function Navbar() {
@@ -10,7 +10,7 @@ function Navbar() {
       <ul css={styles.navbarList}>
         <li>
           <NavLink
-            to={PathConstants.SHOP}
+            to={PATHS.SHOP}
             style={({ isActive }) => {
               return {
                 color: isActive ? colors.black : '',
@@ -23,7 +23,7 @@ function Navbar() {
         </li>
         <li>
           <NavLink
-            to={PathConstants.BLOG}
+            to={PATHS.BLOG}
             style={({ isActive }) => {
               return {
                 color: isActive ? colors.black : '',
@@ -36,7 +36,7 @@ function Navbar() {
         </li>
         <li>
           <NavLink
-            to={PathConstants.CONTACT}
+            to={PATHS.CONTACT}
             style={({ isActive }) => {
               return {
                 color: isActive ? colors.black : '',

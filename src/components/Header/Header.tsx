@@ -3,14 +3,14 @@ import * as styles from './Header.styles';
 import * as commonStyles from '../../styles/commonStyles';
 import Navbar from '../Navbar/Navbar';
 import { useNavigate } from 'react-router-dom';
-import { PathConstants } from '../../routes/pathConstants';
+import { PATHS } from '../../routes/paths';
 
 function Header() {
   const navigate = useNavigate();
 
   return (
     <header css={[styles.header, commonStyles.container]}>
-      <div css={styles.headerImage} onClick={() => navigate(PathConstants.HOME)} />
+      <div css={styles.headerImage} onClick={() => navigate(PATHS.HOME)} />
       <Navbar />
     </header>
   );
