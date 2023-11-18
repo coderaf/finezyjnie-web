@@ -11,7 +11,7 @@ import { showToast } from '../../../utils/showToast';
 
 function UpdatesAndBio() {
   const { isPending, error, data } = useQuery({
-    queryKey: ['posts', { page: 1, pageSize: 10 }],
+    queryKey: ['posts'],
     queryFn: () => fetchPosts({ page: 1, pageSize: 1 }),
   });
 
