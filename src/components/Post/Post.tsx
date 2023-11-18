@@ -7,9 +7,10 @@ import { truncateString } from '../../utils/truncateString';
 import { useNavigate } from 'react-router-dom';
 import { PATHS } from '../../routes/paths';
 
-const fallbackDesktopImage = 'https://picsum.photos/400/600';
-const fallbackMobileImage = 'https://picsum.photos/200/300';
+const fallbackDesktopImage = 'https://picsum.photos/600/400';
+const fallbackMobileImage = 'https://picsum.photos/300/100';
 
+// todo: change to PostCard?
 function Post({ title, content, createdAt, images, id }: PostResponseDto): ReactElement {
   const formattedDate = format(new Date(createdAt), 'MMMM d, yyyy');
   const desktopImage =
