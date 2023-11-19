@@ -16,6 +16,10 @@ export const globalCss = css`
     scroll-behavior: smooth;
   }
 
+  body {
+    font-family: 'Open Sans', sans-serif;
+  }
+
   input,
   input:focus,
   textarea,

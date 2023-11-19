@@ -1,6 +1,7 @@
 const appPathConstants = {
   HOME: '/',
   SHOP: '/sklep',
+  PRODUCT: '/produkt',
   BLOG: '/blog',
   CONTACT: '/kontakt',
 };

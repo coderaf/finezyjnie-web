@@ -39,7 +39,7 @@ function Carousel({ products }: Props) {
       >
         {products.map((product) => (
           <SwiperSlide key={product.id}>
-            <ProductThumbnail {...product} />
+            <ProductThumbnail product={product} />
           </SwiperSlide>
         ))}
       </Swiper>
