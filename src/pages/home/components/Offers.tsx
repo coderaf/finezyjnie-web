@@ -5,8 +5,10 @@ import Text from '../../../components/Text/Text';
 import pageContent from '../pageContent';
 import { Product } from '../../../types/common';
 import Carousel from '../../../components/Carousel/Carousel';
+import { useQuery } from '@tanstack/react-query';
+import { fetchProducts } from '../../../api/shop';
 
-// todo: remove dummy data
+// todo: remove dummy data when endpoint is ready
 const products: Product[] = [
   {
     id: 'dahsid76223asidy',
@@ -213,6 +215,7 @@ function Offers() {
   //   queryKey: ['products'],
   //   queryFn: () => fetchProducts({ page: 1, pageSize: 6, tag: 'promoted' }),
   // });
+
   return (
     <section css={[commonStyles.container, styles.offers]}>
       <div css={styles.offersSection}>

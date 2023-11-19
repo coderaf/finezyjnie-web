@@ -7,10 +7,11 @@ import { truncateString } from '../../utils/truncateString';
 import { useNavigate } from 'react-router-dom';
 import { PATHS } from '../../routes/paths';
 
+// todo: add fallback images to public folder
 const fallbackDesktopImage = 'https://picsum.photos/600/400';
 const fallbackMobileImage = 'https://picsum.photos/300/100';
 
-// todo: change to PostCard?
+// todo: change name to PostCard if there will be Post component for single post
 function Post({ title, content, createdAt, images, id }: PostResponseDto): ReactElement {
   const formattedDate = format(new Date(createdAt), 'MMMM d, yyyy');
   const desktopImage =

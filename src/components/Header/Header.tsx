@@ -5,7 +5,7 @@ import Navbar from '../Navbar/Navbar';
 import { useNavigate } from 'react-router-dom';
 import { PATHS } from '../../routes/paths';
 
-// todo: change imgs
+// todo: add fallback images to public folder
 const fallbackHeaderImageDesktop = 'https://picsum.photos/1000/200?grayscale';
 const fallbackHeaderImageMobile = 'https://picsum.photos/400/200?grayscale';
 
@@ -14,6 +14,7 @@ function Header() {
 
   return (
     <header css={[styles.header, commonStyles.container]}>
+      {/*// todo: add real header photo*/}
       <div
         css={styles.headerImage(fallbackHeaderImageDesktop, fallbackHeaderImageMobile)}
         onClick={() => navigate(PATHS.HOME)}
