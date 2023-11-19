@@ -5,15 +5,18 @@ import Text from '../../../components/Text/Text';
 import * as styles from './UpdatesAndBio.styles';
 import * as commonStyles from '../../../styles/commonStyles';
 import Post from '../../../components/Post/Post';
-import pageContent from '../pageContent';
+import { pageContent } from '../pageContent';
 import Spinner from '../../../components/Spinner/Spinner';
 import { showToast } from '../../../utils/showToast';
+import { useMediaQueries } from '../../../hooks/useMediaQueries';
 
 function UpdatesAndBio() {
   const { isPending, error, data } = useQuery({
     queryKey: ['posts'],
     queryFn: () => fetchPosts({ page: 1, pageSize: 1 }),
   });
+
+  const { isMobile } = useMediaQueries();
 
   if (error) {
     showToast('error', error.message);
@@ -22,16 +25,9 @@ function UpdatesAndBio() {
   return (
     <section css={[commonStyles.container, styles.updatesAndBio]}>
       <div css={styles.postWrapper}>
-        <div css={[styles.titleWrapper, commonStyles.hideMobile]}>
-          <Text variant="dHeadline5" color="main" uppercase>
-            {pageContent.updatesTitle}
-          </Text>
-        </div>
-        <div css={[styles.titleWrapper, commonStyles.hideDesktop]}>
-          <Text variant="mHeadline5" color="main" uppercase>
-            {pageContent.updatesTitle}
-          </Text>
-        </div>
+        <Text variant={isMobile ? 'mHeadline5' : 'dHeadline5'} color="main" uppercase>
+          {pageContent.updatesTitle}
+        </Text>
 
         {isPending && <Spinner />}
 
@@ -45,17 +41,9 @@ function UpdatesAndBio() {
       </div>
 
       <div css={styles.bioWrapper}>
-        <div css={[styles.titleWrapper, commonStyles.hideMobile]}>
-          <Text variant="dHeadline5" color="main" uppercase>
-            {pageContent.bioTitle}
-          </Text>
-        </div>
-
-        <div css={[styles.titleWrapper, commonStyles.hideDesktop]}>
-          <Text variant="mHeadline5" color="main" uppercase>
-            {pageContent.bioTitle}
-          </Text>
-        </div>
+        <Text variant={isMobile ? 'mHeadline5' : 'dHeadline5'} color="main" uppercase>
+          {pageContent.bioTitle}
+        </Text>
 
         <div css={styles.bio}>
           <Text variant="body16" color="white">

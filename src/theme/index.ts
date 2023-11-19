@@ -1,7 +1,7 @@
 import { colors } from './colors';
 import { webDimensions } from './webDimensions';
 
-const theme = {
+export const theme = {
   colors,
   webDimensions,
   breakpoints: {
@@ -10,5 +10,3 @@ const theme = {
     mobile: '425px',
   },
 };
-
-export default theme;

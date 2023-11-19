@@ -1,10 +1,10 @@
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Global, ThemeProvider } from '@emotion/react';
-import theme from './theme';
+import { theme } from './theme';
 import { globalCss } from './styles/globalCss';
 import Layout from './components/Layout/Layout';
-import routes from './routes';
+import { routes } from './routes';
 import ErrorPage from './pages/error-page/ErrorPage';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
@@ -16,6 +16,7 @@ import 'swiper/css/navigation';
 function App() {
   const router = createBrowserRouter([
     {
+      path: '/',
       element: <Layout />,
       errorElement: <ErrorPage />,
       children: routes,
