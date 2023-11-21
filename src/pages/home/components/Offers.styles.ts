@@ -17,3 +17,9 @@ export const offersSection = (theme: Theme) => css`
     margin-bottom: 48px;
   }
 `;
+
+export const carouselWrapper = () => css`
+  max-width: 100%;
+  // adding min height to prevent swiper section flickering after request is done
+  min-height: 332px;
+`;

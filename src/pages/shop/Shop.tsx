@@ -1,12 +1,19 @@
 import React from 'react';
 import * as commonStyles from '../.././styles/commonStyles';
 import * as styles from './Shop.styles';
-import Categories from './components/Categories/Categories';
-import { products } from '../mock';
+import Categories from './components/Categories';
 import ProductThumbnail from '../../components/ProductThumbnail/ProductThumbnail';
 import { useMediaQueries } from '../../hooks/useMediaQueries';
+import { useQuery } from '@tanstack/react-query';
+import { fetchProducts } from '../../api/shop';
+import Spinner from '../../components/Spinner/Spinner';
+import Text from '../../components/Text/Text';
 
 function Shop() {
+  const { data, error, isPending } = useQuery({
+    queryKey: ['products', { page: 1, pageSize: 6, tag: 'promoted' }],
+    queryFn: () => fetchProducts({ page: 1, pageSize: 6, tag: 'promoted' }),
+  });
   const { isMobile } = useMediaQueries();
 
   return (
@@ -18,9 +25,19 @@ function Shop() {
       )}
 
       <div css={styles.productsWrapper}>
-        {products.map((product) => (
-          <ProductThumbnail product={product} key={product.id} />
-        ))}
+        {isPending && <Spinner />}
+
+        {/*todo: add error message component*/}
+        {error && (
+          <Text variant="body16" color="error">
+            {error.message}
+          </Text>
+        )}
+
+        {data?.products &&
+          data.products.map((product) => (
+            <ProductThumbnail product={product} withDetails key={product.id} />
+          ))}
       </div>
     </div>
   );

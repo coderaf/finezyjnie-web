@@ -1,6 +1,6 @@
 import { css, Theme } from '@emotion/react';
 
-export const swiperWrapper = (theme: Theme) => css`
+export const mySwiper = (theme: Theme) => css`
   width: 100%;
   margin: 0 auto;
 

@@ -43,54 +43,42 @@ const fonts: Record<string, { fontFamily: string; fontWeight: FontWeight }> = {
 
 const fontVariants = {
   // desktop headings
-  dHeadline4large: {
-    fontFamily: fonts.bold.fontFamily,
-    fontWeight: fonts.bold.fontWeight,
-    fontSize: fontSizes.large,
-    lineHeight: '48px',
-  },
-  dHeadline4small: {
+  dHeadline1: {
     fontFamily: fonts.bold.fontFamily,
     fontWeight: fonts.bold.fontWeight,
     fontSize: fontSizes.medium2,
     lineHeight: '40px',
   },
-  dHeadline5: {
+  dHeadline2: {
     fontFamily: fonts.bold.fontFamily,
     fontWeight: fonts.bold.fontWeight,
     fontSize: fontSizes.medium,
     lineHeight: '32px',
   },
-  dHeadline6: {
+  dHeadline3: {
     fontFamily: fonts.bold.fontFamily,
     fontWeight: fonts.bold.fontWeight,
     fontSize: fontSizes.small3,
     lineHeight: '28px',
   },
   // mobile headings
-  mHeadline4large: {
+  mHeadline1: {
     fontFamily: fonts.bold.fontFamily,
     fontWeight: fonts.bold.fontWeight,
     fontSize: fontSizes.medium2,
     lineHeight: '40px',
   },
-  mHeadline4small: {
+  mHeadline2: {
     fontFamily: fonts.bold.fontFamily,
     fontWeight: fonts.bold.fontWeight,
     fontSize: fontSizes.medium,
     lineHeight: '32 px',
   },
-  mHeadline5: {
+  mHeadline3: {
     fontFamily: fonts.bold.fontFamily,
     fontWeight: fonts.bold.fontWeight,
     fontSize: fontSizes.small3,
     lineHeight: '28 px',
-  },
-  mHeadline6: {
-    fontFamily: fonts.bold.fontFamily,
-    fontWeight: fonts.bold.fontWeight,
-    fontSize: fontSizes.small2,
-    lineHeight: '26 px',
   },
   body10: {
     fontFamily: fonts.regular.fontFamily,

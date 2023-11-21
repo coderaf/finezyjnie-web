@@ -5,8 +5,8 @@ import Navbar from '../Navbar/Navbar';
 import { useNavigate } from 'react-router-dom';
 import { PATHS } from '../../routes/paths';
 
-// todo: add fallback images to public folder
-const fallbackHeaderImageDesktop = 'https://picsum.photos/1000/200?grayscale';
+// todo: add header photos to public directory
+const fallbackHeaderImageDesktop = 'https://picsum.photos/1200/200?grayscale';
 const fallbackHeaderImageMobile = 'https://picsum.photos/400/200?grayscale';
 
 function Header() {

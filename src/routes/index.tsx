@@ -14,6 +14,10 @@ export const routes: RouteObject[] = [
     element: <Shop />,
   },
   {
+    path: `${PATHS.SHOP}/:category`,
+    element: <Shop />,
+  },
+  {
     path: `${PATHS.PRODUCT}/:productId`,
     element: <Product />,
   },

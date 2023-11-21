@@ -7,6 +7,13 @@ import { AiOutlineMail } from 'react-icons/ai';
 import Text from '../Text/Text';
 
 function Footer() {
+  // todo: change to real data
+  const socialMediaLinks = {
+    facebook: 'https://www.facebook.com/profile.php?id=100063321829442',
+    instagram: 'https://www.instagram.com/finezyjnie.pl/',
+    email: 'finezyjnagosia@gmail.com',
+  };
+
   return (
     <footer css={[commonStyles.container, styles.footer]}>
       <Text variant="body12" color="white">
@@ -15,9 +22,17 @@ function Footer() {
           kj-ninja
         </a>
       </Text>
-      <AiOutlineInstagram size={25} />
-      <SlSocialFacebook size={25} />
-      <AiOutlineMail size={25} />
+      <a href={socialMediaLinks.instagram} target="_blank" rel="noopener noreferrer">
+        <AiOutlineInstagram size={25} />
+      </a>
+
+      <a href={socialMediaLinks.facebook} target="_blank" rel="noopener noreferrer">
+        <SlSocialFacebook size={25} />
+      </a>
+
+      <a href={`mailto:${socialMediaLinks.email}`} rel="noopener noreferrer">
+        <AiOutlineMail size={25} />
+      </a>
     </footer>
   );
 }
