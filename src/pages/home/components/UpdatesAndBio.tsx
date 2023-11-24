@@ -8,6 +8,7 @@ import Post from '../../../components/Post/Post';
 import { pageContent } from '../pageContent';
 import Spinner from '../../../components/Spinner/Spinner';
 import { useMediaQueries } from '../../../hooks/useMediaQueries';
+import ErrorMessage from '../../../components/ErrorMessage/ErrorMessage';
 
 function UpdatesAndBio() {
   const { isPending, error, data } = useQuery({
@@ -26,12 +27,7 @@ function UpdatesAndBio() {
 
         {isPending && <Spinner />}
 
-        {/*todo: add error message component*/}
-        {error && (
-          <Text variant="body16" color="error">
-            {error.message}
-          </Text>
-        )}
+        {error && <ErrorMessage />}
 
         {data?.posts.map((post) => <Post key={post.id} post={post} />)}
       </div>

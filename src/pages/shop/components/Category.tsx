@@ -1,9 +1,9 @@
 import React from 'react';
 import * as styles from './Category.styles';
-import { PATHS } from '../../../../routes/paths';
-import Text from '../../../../components/Text/Text';
+import { PATHS } from '../../../routes/paths';
+import Text from '../../../components/Text/Text';
 import { useNavigate } from 'react-router-dom';
-import { capitalize } from '../../../../utils/capitalize';
+import { capitalize } from '../../../utils/capitalize';
 
 interface Props {
   category: string;

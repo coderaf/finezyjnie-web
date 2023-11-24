@@ -26,8 +26,12 @@ export const postWrapper = (theme: Theme) => css`
   }
 `;
 
-export const titleWrapper = () => css`
+export const titleWrapper = (theme: Theme) => css`
   text-align: center;
+
+  @media (min-width: ${theme.breakpoints.desktop}) {
+    text-align: right;
+  }
 `;
 
 export const bioWrapper = (theme: Theme) => css`
@@ -44,7 +48,7 @@ export const bioWrapper = (theme: Theme) => css`
     width: 100%;
     order: 1;
     text-align: center;
-    padding: 16px;
+    padding: 24px;
   }
 `;
 

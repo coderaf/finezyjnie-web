@@ -11,7 +11,7 @@ interface Props {
   post: PostProps;
 }
 
-// todo: change name to PostCard if there will be Post component for single post
+// todo: change name to PostCard and props also
 function Post({ post }: Props): ReactElement {
   const navigate = useNavigate();
 

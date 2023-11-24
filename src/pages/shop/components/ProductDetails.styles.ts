@@ -16,3 +16,13 @@ export const productDetails = (theme: Theme) => css`
     width: 35%;
   }
 `;
+
+export const buttonWrapper = (theme: Theme) => css`
+  text-align: center;
+  margin-top: 32px;
+
+  @media (min-width: ${theme.breakpoints.tablet}) {
+    text-align: left;
+    max-width: 300px;
+  }
+`;

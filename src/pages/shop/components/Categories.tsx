@@ -1,7 +1,7 @@
 import React from 'react';
 import Text from '../../../components/Text/Text';
 import { pageContent } from '../pageContent';
-import Category from './Category/Category';
+import Category from './Category';
 
 // todo: remove mock when API is ready
 const categories = ['koszulki', 'bluzy', 'spodnie', 'kurtki'];

@@ -15,24 +15,26 @@ function Footer() {
   };
 
   return (
-    <footer css={[commonStyles.container, styles.footer]}>
-      <Text variant="body12" color="white">
-        © {new Date().getFullYear()} - Developed by{' '}
-        <a href="https://github.com/kj-ninja" target="_blank" rel="noopener noreferrer">
-          kj-ninja
+    <footer css={styles.footer}>
+      <div css={styles.footerContent}>
+        <Text variant="body12" color="white">
+          © {new Date().getFullYear()} - Developed by{' '}
+          <a href="https://github.com/kj-ninja" target="_blank" rel="noopener noreferrer">
+            kj-ninja
+          </a>
+        </Text>
+        <a href={socialMediaLinks.instagram} target="_blank" rel="noopener noreferrer">
+          <AiOutlineInstagram size={25} />
         </a>
-      </Text>
-      <a href={socialMediaLinks.instagram} target="_blank" rel="noopener noreferrer">
-        <AiOutlineInstagram size={25} />
-      </a>
 
-      <a href={socialMediaLinks.facebook} target="_blank" rel="noopener noreferrer">
-        <SlSocialFacebook size={25} />
-      </a>
+        <a href={socialMediaLinks.facebook} target="_blank" rel="noopener noreferrer">
+          <SlSocialFacebook size={25} />
+        </a>
 
-      <a href={`mailto:${socialMediaLinks.email}`} rel="noopener noreferrer">
-        <AiOutlineMail size={25} />
-      </a>
+        <a href={`mailto:${socialMediaLinks.email}`} rel="noopener noreferrer">
+          <AiOutlineMail size={25} />
+        </a>
+      </div>
     </footer>
   );
 }

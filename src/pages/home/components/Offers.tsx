@@ -8,6 +8,7 @@ import { useQuery } from '@tanstack/react-query';
 import { fetchProducts } from '../../../api/shop';
 import { useMediaQueries } from '../../../hooks/useMediaQueries';
 import Spinner from '../../../components/Spinner/Spinner';
+import ErrorMessage from '../../../components/ErrorMessage/ErrorMessage';
 
 function Offers() {
   const { isPending, error, data } = useQuery({
@@ -26,12 +27,7 @@ function Offers() {
 
       {isPending && <Spinner />}
 
-      {/*todo: add error message component*/}
-      {error && (
-        <Text variant="body16" color="error">
-          {error.message}
-        </Text>
-      )}
+      {error && <ErrorMessage />}
 
       <div css={styles.carouselWrapper}>
         {data?.products && <Carousel products={data.products} />}

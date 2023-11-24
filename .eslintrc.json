@@ -24,6 +24,12 @@
         "ignore": ["css"]
       }
     ],
+    "@typescript-eslint/no-empty-interface": [
+      "error",
+      {
+        "allowSingleExtends": true
+      }
+    ],
     "react/react-in-jsx-scope": "off",
     "@typescript-eslint/ban-ts-comment": "off",
     "@typescript-eslint/no-explicit-any": "off",

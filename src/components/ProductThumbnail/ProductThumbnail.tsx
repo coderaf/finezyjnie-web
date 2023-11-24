@@ -17,7 +17,7 @@ function ProductThumbnail({ product, withDetails }: Props) {
   const mobileImage = product.images.small[0];
 
   const handleProductClick = () => {
-    navigate(`${PATHS.PRODUCT}/${product.id}`);
+    navigate(`${PATHS.SHOP_PRODUCT}/${product.id}`);
   };
 
   return (

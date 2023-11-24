@@ -1,11 +1,12 @@
 const appPathConstants = {
   HOME: '/',
   SHOP: '/sklep',
-  PRODUCT: '/produkt',
+  SHOP_PRODUCT: '/sklep/produkt',
   BLOG: '/blog',
   CONTACT: '/kontakt',
+  CART: '/koszyk',
 };
 
-type PathConstantsType = Record<keyof typeof appPathConstants, string>;
+export type PathConstantsType = Record<keyof typeof appPathConstants, string>;
 
 export const PATHS: PathConstantsType = appPathConstants;
