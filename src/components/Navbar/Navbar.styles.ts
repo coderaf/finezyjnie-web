@@ -11,14 +11,20 @@ export const homeNavbarWrapper = (theme: Theme) => css`
   background-color: ${theme.colors.bgSection};
 `;
 
-export const navbar = (theme: Theme) => css`
+export const navbarLogoWrapper = (theme: Theme) => css`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+`;
+
+export const navbarSticky = (theme: Theme) => css`
   width: 100%;
   height: ${theme.webDimensions.navHeight}px;
-  display: flex;
-  justify-content: flex-end;
+  border-bottom: 1px solid ${theme.colors.black};
 
-  @media (max-width: ${theme.breakpoints.mobile}) {
-    border-bottom: 1px solid ${theme.colors.black};
+  @media (min-width: ${theme.breakpoints.desktop}) {
+    border: 0;
   }
 
   &.sticky {
@@ -39,6 +45,15 @@ export const navbar = (theme: Theme) => css`
   }
 `;
 
+export const navbar = (theme: Theme) => css`
+  max-width: ${theme.webDimensions.maxPageWidth}px;
+  display: flex;
+  justify-content: flex-end;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 16px;
+`;
+
 export const homeNavbar = (theme: Theme) => css`
   max-width: 800px;
   margin: 0 auto;
@@ -51,7 +66,6 @@ export const navbarList = (theme: Theme) => css`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 16px;
 
   @media (min-width: ${theme.breakpoints.desktop}) {
     padding: 0;
