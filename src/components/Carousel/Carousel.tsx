@@ -20,13 +20,14 @@ const swiperBreakpoints = {
   },
 };
 
+// todo: think to make carousel more generic not only for products
 interface Props {
   products: Product[];
 }
 
 function Carousel({ products }: Props) {
   return (
-    <div css={styles.swiperWrapper}>
+    <div css={styles.mySwiper}>
       <Swiper
         autoplay={{ delay: 2500 }}
         slidesPerView={1}
@@ -35,7 +36,6 @@ function Carousel({ products }: Props) {
         modules={[Navigation, Autoplay]}
         navigation={true}
         breakpoints={swiperBreakpoints}
-        className="mySwiper"
       >
         {products.map((product) => (
           <SwiperSlide key={product.id}>

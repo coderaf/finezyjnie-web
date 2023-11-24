@@ -3,31 +3,37 @@ import * as styles from './ProductThumbnail.styles';
 import { Product } from '../../types/common';
 import { useNavigate } from 'react-router-dom';
 import { PATHS } from '../../routes/paths';
-
-// todo: add fallback images to public folder
-const fallbackDesktopImage = 'https://picsum.photos/200/400';
-const fallbackMobileImage = 'https://picsum.photos/200/100';
+import Text from '../Text/Text';
 
 interface Props {
   product: Product;
+  withDetails?: boolean;
 }
 
-function ProductThumbnail({ product }: Props) {
+function ProductThumbnail({ product, withDetails }: Props) {
   const navigate = useNavigate();
 
-  console.log('PATHS.PRODUCT ', PATHS.PRODUCT);
-  console.log(`${PATHS.PRODUCT}/${product.id}`);
+  const desktopImage = product.images.large[0];
+  const mobileImage = product.images.small[0];
 
   const handleProductClick = () => {
-    console.log('Product clicked!', product);
-    navigate(`${PATHS.PRODUCT}/${product.id}`);
+    navigate(`${PATHS.SHOP_PRODUCT}/${product.id}`);
   };
 
   return (
-    <div
-      css={styles.productThumbnail(fallbackDesktopImage, fallbackMobileImage)}
-      onClick={handleProductClick}
-    />
+    <div css={styles.productThumbnail}>
+      <div
+        css={styles.productThumbnailImage(desktopImage, mobileImage)}
+        onClick={handleProductClick}
+      />
+
+      {withDetails && (
+        <div css={styles.productThumbnailDetails}>
+          <Text variant="body16">{product.name}</Text>
+          <Text variant="body16">{product.displayPrice}</Text>
+        </div>
+      )}
+    </div>
   );
 }
 

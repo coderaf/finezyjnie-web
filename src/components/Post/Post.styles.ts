@@ -3,6 +3,9 @@ import { css, Theme } from '@emotion/react';
 export const post = (theme: Theme) => css`
   width: 100%;
   max-width: 450px;
+  // this style is related to UpdatesAndBio section min-height
+  //
+  min-height: 400px;
   display: flex;
   flex-direction: column;
   border-radius: 4px;

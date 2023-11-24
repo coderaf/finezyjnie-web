@@ -3,6 +3,9 @@ import { css, Theme } from '@emotion/react';
 export const updatesAndBio = (theme: Theme) => css`
   display: flex;
   padding: 32px;
+  // adding min height to prevent flickering section after request is done
+  // this style is related to Post.styles.ts min-height
+  min-height: 512px;
 
   @media (max-width: ${theme.breakpoints.tablet}) {
     flex-direction: column;
@@ -24,8 +27,10 @@ export const postWrapper = (theme: Theme) => css`
 `;
 
 export const titleWrapper = (theme: Theme) => css`
-  @media (max-width: ${theme.breakpoints.tablet}) {
-    text-align: center;
+  text-align: center;
+
+  @media (min-width: ${theme.breakpoints.desktop}) {
+    text-align: right;
   }
 `;
 
@@ -43,14 +48,14 @@ export const bioWrapper = (theme: Theme) => css`
     width: 100%;
     order: 1;
     text-align: center;
-    padding: 16px;
+    padding: 24px;
   }
 `;
 
 export const bio = (theme: Theme) => css`
-  text-align: right;
+  text-align: left;
 
-  @media (max-width: ${theme.breakpoints.tablet}) {
-    text-align: center;
+  @media (min-width: ${theme.breakpoints.desktop}) {
+    text-align: right;
   }
 `;

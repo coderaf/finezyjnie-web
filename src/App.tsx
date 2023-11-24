@@ -22,7 +22,6 @@ function App() {
       children: routes,
     },
   ]);
-
   const queryClient = new QueryClient();
 
   return (

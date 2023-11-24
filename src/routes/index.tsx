@@ -4,7 +4,7 @@ import Home from '../pages/home/Home';
 import Shop from '../pages/shop/Shop';
 import Blog from '../pages/blog/Blog';
 import Contact from '../pages/contact/Contact';
-import Product from '../pages/product/Product';
+import Product from '../pages/shop/components/Product';
 import React from 'react';
 
 export const routes: RouteObject[] = [
@@ -14,7 +14,11 @@ export const routes: RouteObject[] = [
     element: <Shop />,
   },
   {
-    path: `${PATHS.PRODUCT}/:productId`,
+    path: `${PATHS.SHOP}/:category`,
+    element: <Shop />,
+  },
+  {
+    path: `${PATHS.SHOP_PRODUCT}/:productId`,
     element: <Product />,
   },
   { path: PATHS.BLOG, element: <Blog /> },

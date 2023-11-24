@@ -1,27 +1,30 @@
-export interface Image {
+export interface Images {
   small: string[];
   large: string[];
 }
 
-interface Category {
+export interface Category {
   id: string;
   name: string;
 }
 
-interface Tag extends Category {}
+export interface Tag extends Category {}
 
 export interface Product {
   id: string;
   name: string;
   description: string;
-  images: {
-    small: string[];
-    large: string[];
-  };
+  images: Images;
   price: number;
-  price_display: string;
+  displayPrice: string;
   stock: number;
   reserved: number;
   category: Category;
   tags: Tag[];
+}
+
+export interface ProductCollection {
+  page: number;
+  pagesTotal: number;
+  products: Product[];
 }
