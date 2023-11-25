@@ -9,7 +9,7 @@ interface Props {
   override?: CSSProperties;
 }
 
-function Spinner({ color = colors.main, loading = true, override, size = 40 }: Props) {
+function Spinner({ color = colors.primary, loading = true, override, size = 40 }: Props) {
   return (
     <MoonLoad
       color={color}

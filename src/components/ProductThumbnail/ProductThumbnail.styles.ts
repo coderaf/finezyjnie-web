@@ -40,7 +40,7 @@ export const productThumbnailImage =
     background-image: url(${desktopImg});
     background-size: cover;
     background-position: center center;
-    border: 1px solid ${theme.colors.borderProduct};
+    border: 1px solid ${theme.colors.black};
     margin-bottom: 8px;
 
     @media (max-width: ${theme.breakpoints.tablet}) {

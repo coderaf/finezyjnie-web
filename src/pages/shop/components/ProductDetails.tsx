@@ -8,6 +8,7 @@ import Button from '../../../components/Button/Button';
 interface Props {
   product: Product;
 }
+
 function ProductDetails({ product }: Props) {
   const { addToCart } = useCart();
 

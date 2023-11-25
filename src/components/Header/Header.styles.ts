@@ -11,11 +11,6 @@ export const headerImage = (desktopImg: string, mobileImg: string) => (theme: Th
   background-image: url(${desktopImg});
   background-size: cover;
   background-position: center;
-  cursor: pointer;
-
-  &:hover {
-    opacity: 0.8;
-  }
 
   @media (max-width: ${theme.breakpoints.tablet}) {
     background-image: url(${mobileImg});

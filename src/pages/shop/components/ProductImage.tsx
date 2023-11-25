@@ -1,23 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import * as styles from './ProductImage.styles';
 import { Images } from '../../../types/common';
 import { useMediaQueries } from '../../../hooks/useMediaQueries';
-import Carousel from '../../../components/Carousel/Carousel';
+import ProductImageSwiper from './ProductImageSwiper';
+import { SwiperClass } from 'swiper/swiper-react';
 
 interface Props {
   images: Images;
-  name: string;
 }
 
-function ProductImage({ images, name }: Props) {
-  const { isMobile } = useMediaQueries();
-
+function ProductImage({ images }: Props) {
+  const [swiper, setSwiper] = useState<SwiperClass>();
+  const { isMobile, isDesktop } = useMediaQueries();
   const productImages = isMobile ? images.small : images.large;
+
+  const handleThumbnailClick = (index: number) => {
+    swiper?.slideTo(index);
+  };
 
   return (
     <div css={styles.productImageWrapper}>
-      {/*<Carousel products={} />*/}
-      <img src={productImages?.[0]} alt={`Produkt: ${name}`} />
+      {isDesktop && (
+        <div css={styles.productImageThumbnails}>
+          {images.large.map((image, i) => (
+            <img src={image} alt="" key={image} onClick={() => handleThumbnailClick(i)} />
+          ))}
+        </div>
+      )}
+
+      <ProductImageSwiper images={productImages} setSwiper={setSwiper} />
     </div>
   );
 }
