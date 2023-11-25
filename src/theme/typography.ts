@@ -65,20 +65,20 @@ const fontVariants = {
   mHeadline1: {
     fontFamily: fonts.bold.fontFamily,
     fontWeight: fonts.bold.fontWeight,
-    fontSize: fontSizes.medium2,
-    lineHeight: '40px',
+    fontSize: fontSizes.medium,
+    lineHeight: '32px',
   },
   mHeadline2: {
     fontFamily: fonts.bold.fontFamily,
     fontWeight: fonts.bold.fontWeight,
-    fontSize: fontSizes.medium,
-    lineHeight: '32 px',
+    fontSize: fontSizes.small3,
+    lineHeight: '28 px',
   },
   mHeadline3: {
     fontFamily: fonts.bold.fontFamily,
     fontWeight: fonts.bold.fontWeight,
-    fontSize: fontSizes.small3,
-    lineHeight: '28 px',
+    fontSize: fontSizes.small2,
+    lineHeight: '24 px',
   },
   body10: {
     fontFamily: fonts.regular.fontFamily,

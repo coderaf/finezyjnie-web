@@ -17,6 +17,7 @@ export const productInCart = (theme: Theme) => css`
 
   @media (min-width: ${theme.breakpoints.desktop}) {
     min-height: 200px;
+    font-size: 20px;
   }
 `;
 
@@ -67,7 +68,7 @@ export const productInCartPrice = () => css`
   justify-content: space-between;
 `;
 
-export const productInCartRemove = () => css`
+export const productInCartRemove = (theme: Theme) => css`
   width: 5%;
   display: flex;
   align-items: center;
