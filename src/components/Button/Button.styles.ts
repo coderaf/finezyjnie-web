@@ -5,7 +5,7 @@ export const button = (theme: Theme) => css`
   border: 0;
   color: ${theme.colors.white};
   padding: 16px 32px;
-  background-color: ${theme.colors.main};
+  background-color: ${theme.colors.primary};
   cursor: pointer;
   transition: transform 0.2s ease-in-out;
 

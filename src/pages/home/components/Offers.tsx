@@ -3,7 +3,7 @@ import * as commonStyles from '../../../styles/commonStyles';
 import * as styles from './Offers.styles';
 import Text from '../../../components/Text/Text';
 import { pageContent } from '../pageContent';
-import Carousel from '../../../components/Carousel/Carousel';
+import OffersSwiper from './OffersSwiper';
 import { useQuery } from '@tanstack/react-query';
 import { fetchProducts } from '../../../api/shop';
 import { useMediaQueries } from '../../../hooks/useMediaQueries';
@@ -30,7 +30,7 @@ function Offers() {
       {error && <ErrorMessage />}
 
       <div css={styles.carouselWrapper}>
-        {data?.products && <Carousel products={data.products} />}
+        {data?.products && <OffersSwiper products={data.products} />}
       </div>
     </section>
   );

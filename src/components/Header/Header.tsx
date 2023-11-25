@@ -5,10 +5,6 @@ import Navbar from '../Navbar/Navbar';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { PATHS } from '../../routes/paths';
 
-// todo: add real header photo and remove fallbacks
-const fallbackHeaderImageDesktop = 'https://picsum.photos/1200/200?grayscale';
-const fallbackHeaderImageMobile = 'https://picsum.photos/400/200?grayscale';
-
 function Header() {
   const navigate = useNavigate();
   const { pathname } = useLocation();
@@ -17,7 +13,10 @@ function Header() {
     <header css={[styles.header, commonStyles.container]}>
       {pathname === PATHS.HOME && (
         <div
-          css={styles.headerImage(fallbackHeaderImageDesktop, fallbackHeaderImageMobile)}
+          css={styles.headerImage(
+            require('../../assets/images/bg-header-desktop.jpeg'),
+            require('../../assets/images/bg-header-mobile.jpeg')
+          )}
           onClick={() => navigate(PATHS.HOME)}
         />
       )}

@@ -11,7 +11,7 @@ export const homeNavbarWrapper = (theme: Theme) => css`
   background-color: ${theme.colors.bgSection};
 `;
 
-export const navbarLogoWrapper = (theme: Theme) => css`
+export const navbarLogoWrapper = () => css`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,7 +32,7 @@ export const navbarSticky = (theme: Theme) => css`
     top: 0;
     left: 0;
     right: 0;
-    z-index: 1;
+    z-index: 2;
     animation: popDown 0.5s;
     border-bottom: 1px solid ${theme.colors.black};
     background-color: ${theme.colors.white};
@@ -54,9 +54,10 @@ export const navbar = (theme: Theme) => css`
   padding: 0 16px;
 `;
 
-export const homeNavbar = (theme: Theme) => css`
+export const homeNavbar = () => css`
   max-width: 800px;
   margin: 0 auto;
+  border: 0;
 `;
 
 export const navbarList = (theme: Theme) => css`
@@ -76,6 +77,6 @@ export const navbarShopList = () => css`
   justify-content: flex-end;
 `;
 
-export const cartLink = (theme: Theme) => css`
+export const cartLink = () => css`
   padding: 0;
 `;

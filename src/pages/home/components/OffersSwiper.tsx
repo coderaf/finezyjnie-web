@@ -1,9 +1,9 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay } from 'swiper/modules';
-import * as styles from './Carousel.styles';
-import ProductThumbnail from '../ProductThumbnail/ProductThumbnail';
-import { Product } from '../../types/common';
+import * as styles from './OffersSwiper.styles';
+import ProductThumbnail from '../../../components/ProductThumbnail/ProductThumbnail';
+import { Product } from '../../../types/common';
 
 const swiperBreakpoints = {
   600: {
@@ -20,12 +20,11 @@ const swiperBreakpoints = {
   },
 };
 
-// todo: think to make carousel more generic not only for products
 interface Props {
   products: Product[];
 }
 
-function Carousel({ products }: Props) {
+function OffersSwiper({ products }: Props) {
   return (
     <div css={styles.mySwiper}>
       <Swiper
@@ -47,4 +46,4 @@ function Carousel({ products }: Props) {
   );
 }
 
-export default Carousel;
+export default OffersSwiper;

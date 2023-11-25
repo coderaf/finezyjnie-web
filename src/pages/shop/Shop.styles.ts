@@ -1,8 +1,13 @@
 import { css, Theme } from '@emotion/react';
 
-export const shop = () => css`
+export const shop = (theme: Theme) => css`
   padding: 32px 16px 32px 32px;
   display: flex;
+  flex-direction: column;
+
+  @media (min-width: ${theme.breakpoints.tablet}) {
+    flex-direction: row;
+  }
 `;
 
 export const categoriesWrapper = () => css`

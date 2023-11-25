@@ -5,6 +5,7 @@ declare module '@emotion/react' {
   export type WebDimensions = {
     maxPageWidth: number;
     navHeight: number;
+    footerHeight: number;
   };
 
   export interface Theme {

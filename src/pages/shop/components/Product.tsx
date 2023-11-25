@@ -8,7 +8,6 @@ import Spinner from '../../../components/Spinner/Spinner';
 import ProductDetails from './ProductDetails';
 import ProductImage from './ProductImage';
 import ErrorMessage from '../../../components/ErrorMessage/ErrorMessage';
-import { useCart } from '../../../store/cartSlice/useCart';
 
 function Product() {
   const { productId } = useParams();
@@ -26,7 +25,7 @@ function Product() {
 
       {data && (
         <div css={styles.productWrapper}>
-          <ProductImage images={data.images} name={data.name} />
+          <ProductImage images={data.images} />
           <ProductDetails product={data} />
         </div>
       )}

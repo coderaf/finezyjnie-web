@@ -6,10 +6,12 @@ const appColors = {
   success: '#2FFD8E',
   link: '#2522BA',
   transparent: 'transparent',
-  main: '#498468',
+  primary: '#498468',
   secondary: '#8eceae',
   bgSection: '#3e765c',
-  borderProduct: '#000000',
+  borderProductOpacityHigh: '#00000033',
+  borderProductOpacityLow: '#000000B3',
+  borderProductActive: '#000000',
 };
 
 type ColorsType = Record<keyof typeof appColors, string>;

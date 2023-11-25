@@ -2,12 +2,13 @@ import React from 'react';
 import Text from '../../../components/Text/Text';
 import { pageContent } from '../pageContent';
 import Category from './Category';
+import { Category as CategoryProps } from '../../../types/common';
 
-// todo: remove mock when API is ready
-const categories = ['koszulki', 'bluzy', 'spodnie', 'kurtki'];
+interface Props {
+  categories: CategoryProps[];
+}
 
-function Categories() {
-  // todo: mobile version and data from backend
+function Categories({ categories }: Props) {
   return (
     <>
       <Text variant="dHeadline2" marginBottom={16}>
@@ -15,7 +16,7 @@ function Categories() {
       </Text>
 
       {categories.map((category) => (
-        <Category category={category} key={category} />
+        <Category category={category} key={category.id} />
       ))}
     </>
   );

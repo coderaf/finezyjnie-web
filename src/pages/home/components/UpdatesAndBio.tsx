@@ -21,7 +21,7 @@ function UpdatesAndBio() {
   return (
     <section css={[commonStyles.container, styles.updatesAndBio]}>
       <div css={styles.postWrapper}>
-        <Text variant={isMobile ? 'mHeadline2' : 'dHeadline2'} color="main" uppercase>
+        <Text variant={isMobile ? 'mHeadline2' : 'dHeadline2'} color="primary" uppercase>
           {pageContent.updatesTitle}
         </Text>
 
@@ -34,7 +34,7 @@ function UpdatesAndBio() {
 
       <div css={styles.bioWrapper}>
         <div css={styles.titleWrapper}>
-          <Text variant={isMobile ? 'mHeadline2' : 'dHeadline2'} color="main" uppercase>
+          <Text variant={isMobile ? 'mHeadline2' : 'dHeadline2'} color="primary" uppercase>
             {pageContent.bioTitle}
           </Text>
         </div>
