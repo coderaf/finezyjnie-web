@@ -7,7 +7,7 @@ import Text from '../../components/Text/Text';
 import CartHeader from './components/CartHeader';
 
 function Cart() {
-  const { productsInCart, amount, addToCart, removeFromCart } = useCart();
+  const { productsInCart, totalProducts, addToCart, removeFromCart, totalAmount } = useCart();
 
   return (
     <div css={[commonStyles.container, styles.cart]}>
@@ -18,7 +18,7 @@ function Cart() {
 
       <div css={styles.cartTotal}>
         <Text variant="body20">
-          Do zapłaty: <span css={styles.cartTotalAmount}>{amount} zł</span>
+          Do zapłaty: <span css={styles.cartTotalAmount}>{totalAmount} zł</span>
         </Text>
       </div>
     </div>

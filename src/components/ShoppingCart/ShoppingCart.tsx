@@ -1,15 +1,15 @@
 import React from 'react';
 import { ReactComponent as CartIcon } from '../../assets/icons/cart.svg';
 import * as styles from './ShoppingCart.styles';
-import { useAppSelector } from '../../store/hooks';
+import { useCart } from '../../store/cartSlice/useCart';
 
 function ShoppingCart() {
-  const amount = useAppSelector((state) => state.cart.amount);
+  const { totalProducts } = useCart();
 
   return (
     <div css={styles.cartIcon}>
       <CartIcon css={styles.shoppingIcon} />
-      <span css={styles.itemCount}>{amount}</span>
+      <span css={styles.itemCount}>{totalProducts}</span>
     </div>
   );
 }
