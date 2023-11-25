@@ -1,31 +1,21 @@
 import React from 'react';
 import * as styles from './ProductThumbnail.styles';
 import { Product } from '../../types/common';
-import { useNavigate } from 'react-router-dom';
-import { PATHS } from '../../routes/paths';
 import Text from '../Text/Text';
 
 interface Props {
   product: Product;
   withDetails?: boolean;
+  onClick?: () => void;
 }
 
-function ProductThumbnail({ product, withDetails }: Props) {
-  const navigate = useNavigate();
-
-  const desktopImage = product.images.large[0];
+function ProductThumbnail({ product, withDetails, onClick }: Props) {
   const mobileImage = product.images.small[0];
-
-  const handleProductClick = () => {
-    navigate(`${PATHS.SHOP_PRODUCT}/${product.id}`);
-  };
+  const desktopImage = product.images.large[0];
 
   return (
     <div css={styles.productThumbnail}>
-      <div
-        css={styles.productThumbnailImage(desktopImage, mobileImage)}
-        onClick={handleProductClick}
-      />
+      <div css={styles.productThumbnailImage(desktopImage, mobileImage)} onClick={onClick} />
 
       {withDetails && (
         <div css={styles.productThumbnailDetails}>

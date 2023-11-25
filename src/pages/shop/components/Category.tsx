@@ -1,10 +1,10 @@
 import React from 'react';
 import * as styles from './Category.styles';
 import { PATHS } from '../../../routes/paths';
-import Text from '../../../components/Text/Text';
 import { useNavigate } from 'react-router-dom';
 import { capitalize } from '../../../utils/capitalize';
 import { Category as CategoryProps } from '../../../types/common';
+import { Link } from 'react-router-dom';
 
 interface Props {
   category: CategoryProps;
@@ -19,9 +19,7 @@ function Category({ category }: Props) {
 
   return (
     <div css={styles.category} onClick={handleCategoryClick}>
-      <Text key={category.id} variant="body16" marginBottom={8}>
-        {capitalize(category.name)}
-      </Text>
+      <Link to={`${PATHS.SHOP}/${category.name}`}>{capitalize(category.name)}</Link>
     </div>
   );
 }

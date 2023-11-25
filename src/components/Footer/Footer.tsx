@@ -1,5 +1,4 @@
 import React from 'react';
-import * as commonStyles from '../../styles/commonStyles';
 import * as styles from './Footer.styles';
 import { SlSocialFacebook } from 'react-icons/sl';
 import { AiOutlineInstagram } from 'react-icons/ai';

@@ -1,9 +1,9 @@
 import React from 'react';
 import { ReactComponent as CartIcon } from '../../assets/icons/cart.svg';
-import * as styles from './Cart.styles';
+import * as styles from './ShoppingCart.styles';
 import { useAppSelector } from '../../store/hooks';
 
-function Cart() {
+function ShoppingCart() {
   const amount = useAppSelector((state) => state.cart.amount);
 
   return (
@@ -14,4 +14,4 @@ function Cart() {
   );
 }
 
-export default Cart;
+export default ShoppingCart;

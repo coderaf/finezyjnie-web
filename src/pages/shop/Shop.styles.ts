@@ -1,9 +1,15 @@
 import { css, Theme } from '@emotion/react';
 
+const sectionMargins = 64;
+
 export const shop = (theme: Theme) => css`
   padding: 32px 16px 32px 32px;
   display: flex;
   flex-direction: column;
+  min-height: calc(
+    100vh - ${sectionMargins}px - ${theme.webDimensions.navHeight}px -
+      ${theme.webDimensions.footerHeight}px
+  );
 
   @media (min-width: ${theme.breakpoints.tablet}) {
     flex-direction: row;

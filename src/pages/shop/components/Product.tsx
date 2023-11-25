@@ -19,7 +19,11 @@ function Product() {
 
   return (
     <div css={[commonStyles.container, styles.product]}>
-      {isPending && <Spinner />}
+      {isPending && (
+        <div css={styles.spinnerWrapper}>
+          <Spinner />
+        </div>
+      )}
 
       {error && <ErrorMessage />}
 

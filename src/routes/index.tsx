@@ -6,6 +6,7 @@ import Blog from '../pages/blog/Blog';
 import Contact from '../pages/contact/Contact';
 import Product from '../pages/shop/components/Product';
 import React from 'react';
+import Cart from '../pages/cart/Cart';
 
 export const routes: RouteObject[] = [
   { path: PATHS.HOME, element: <Home /> },
@@ -20,6 +21,10 @@ export const routes: RouteObject[] = [
   {
     path: `${PATHS.SHOP_PRODUCT}/:productId`,
     element: <Product />,
+  },
+  {
+    path: PATHS.CART,
+    element: <Cart />,
   },
   { path: PATHS.BLOG, element: <Blog /> },
   { path: PATHS.CONTACT, element: <Contact /> },

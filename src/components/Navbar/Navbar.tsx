@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import * as styles from './Navbar.styles';
 import { NavLink, useLocation } from 'react-router-dom';
 import { PATHS } from '../../routes/paths';
-import Cart from '../Cart/Cart';
+import ShoppingCart from '../ShoppingCart/ShoppingCart';
 import MenuItem from '../MenuItem/MenuItem';
 import { useNavigate } from 'react-router-dom';
 
@@ -55,7 +55,7 @@ function Navbar() {
             {!isHome && (
               <li>
                 <NavLink to={PATHS.CART} css={styles.cartLink}>
-                  <Cart />
+                  <ShoppingCart />
                 </NavLink>
               </li>
             )}
