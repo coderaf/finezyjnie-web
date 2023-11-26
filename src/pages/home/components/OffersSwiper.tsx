@@ -51,7 +51,6 @@ function OffersSwiper({ products }: Props) {
               displayPrice={product.displayPrice}
               images={product.images}
               onClick={() => handleProductClick(product.id)}
-              stock={product.stock}
             />
           </SwiperSlide>
         ))}

@@ -13,6 +13,12 @@ export interface ShipmentMethod {
   active: boolean;
 }
 
+export interface PaymentMethod {
+  id: number;
+  name: string;
+  active: boolean;
+}
+
 export interface TransactionItem {
   productId: number;
   quantity: number;

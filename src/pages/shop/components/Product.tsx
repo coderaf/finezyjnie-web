@@ -35,6 +35,10 @@ function Product() {
     if (data && product && product.quantity === data.stock) {
       setOutOfStock(true);
     }
+
+    if (stock === 0) {
+      setOutOfStock(true);
+    }
   }, [data, productsInCart, productId]);
 
   const handleAddToCart = () => {

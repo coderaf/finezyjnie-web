@@ -7,12 +7,11 @@ interface Props {
   name: string;
   displayPrice: string;
   images: Images;
-  stock: number;
   onClick: () => void;
   withDetails?: boolean;
 }
 
-function ProductThumbnail({ name, displayPrice, images, withDetails, stock, onClick }: Props) {
+function ProductThumbnail({ name, displayPrice, images, withDetails, onClick }: Props) {
   const mobileImage = images.small[0];
   const desktopImage = images.large[0];
 

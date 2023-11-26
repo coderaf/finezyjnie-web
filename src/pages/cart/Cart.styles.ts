@@ -12,12 +12,43 @@ export const cart = (theme: Theme) => css`
 
 export const cartTotal = () => css`
   text-align: right;
-  margin: 8px 0;
+  margin: 16px 0;
 `;
 
-export const cartTotalAmount = (theme: Theme) => css`
-  color: ${theme.colors.primary};
-  font-weight: bold;
+export const cartPaymentsWrapper = (theme: Theme) => css`
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @media (min-width: ${theme.breakpoints.tablet}) {
+    flex-direction: row;
+    gap: 64px;
+  }
 `;
 
-export const cartPaymentsWrapper = (theme: Theme) => css``;
+export const cartPaymentsSummary = (theme: Theme) => css`
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-bottom: 64px;
+
+  @media (min-width: ${theme.breakpoints.tablet}) {
+    width: 100%;
+    align-items: flex-end;
+    margin-bottom: 128px;
+  }
+`;
+
+export const cartButtons = () => css`
+  display: flex;
+  justify-content: space-between;
+  gap: 32px;
+  height: 100%;
+  max-height: 50px;
+  white-space: nowrap;
+`;
+
+export const buttonWrapper = () => css`
+  width: 100%;
+  max-width: 200px;
+`;

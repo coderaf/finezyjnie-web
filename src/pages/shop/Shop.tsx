@@ -49,7 +49,6 @@ function Shop() {
               name={product.name}
               displayPrice={product.displayPrice}
               images={product.images}
-              stock={product.stock}
               withDetails
               key={product.id}
               onClick={() => handleProductClick(product.id)}

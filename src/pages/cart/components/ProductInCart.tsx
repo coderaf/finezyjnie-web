@@ -10,12 +10,10 @@ interface Props {
 }
 
 function ProductInCart({ product }: Props) {
-  const { removeFromCart, addToCart, setProductQuantity } = useCart();
+  const { removeFromCart, setProductQuantity } = useCart();
   const defaultOption = { value: String(product.quantity), label: String(product.quantity) };
   const [selectedOption, setSelectedOption] = useState(defaultOption);
   const options = [];
-
-  console.log('product.quantity ', product.quantity);
 
   for (let i = 0; i <= product.stock; i++) {
     options.push({ value: String(i), label: String(i) });

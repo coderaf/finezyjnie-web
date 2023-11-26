@@ -1,6 +1,6 @@
 import { css, Theme } from '@emotion/react';
 
-export const cartPayments = (theme: Theme) => css`
+export const cartMethods = (theme: Theme) => css`
   width: 100%;
 
   @media (min-width: ${theme.breakpoints.tablet}) {
@@ -13,6 +13,7 @@ export const providerWrapper = () => css`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 8px;
+  max-width: 300px;
 `;
 
 export const provider = () => css`

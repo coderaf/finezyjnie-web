@@ -9,9 +9,10 @@ interface Props {
   isDisabled?: boolean;
 }
 
+// todo: add loading state
 function Button({ title, isLoading, secondary, onClick, isDisabled }: Props) {
   return (
-    <button css={styles.button} onClick={onClick} disabled={isDisabled}>
+    <button css={styles.button(secondary)} onClick={onClick} disabled={isDisabled}>
       {title}
     </button>
   );
