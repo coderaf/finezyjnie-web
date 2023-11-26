@@ -17,6 +17,10 @@ export const footerContent = (theme: Theme) => css`
 
   svg {
     cursor: pointer;
+
+    &:hover {
+      color: ${theme.colors.borderProductOpacityLow};
+    }
   }
 
   p {

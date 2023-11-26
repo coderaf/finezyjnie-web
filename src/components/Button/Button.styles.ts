@@ -12,4 +12,9 @@ export const button = (theme: Theme) => css`
   &:hover {
     background-color: ${theme.colors.bgSection};
   }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 `;

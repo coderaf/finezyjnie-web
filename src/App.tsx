@@ -29,7 +29,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
         <Global styles={globalCss} />
-        <ToastContainer />
+        <ToastContainer limit={2} />
         <RouterProvider router={router} />
       </ThemeProvider>
       <ReactQueryDevtools initialIsOpen={false} />

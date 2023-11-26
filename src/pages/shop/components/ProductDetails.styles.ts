@@ -20,6 +20,7 @@ export const productDetails = (theme: Theme) => css`
 export const buttonWrapper = (theme: Theme) => css`
   text-align: center;
   margin-top: 32px;
+  margin-bottom: 8px;
 
   @media (min-width: ${theme.breakpoints.tablet}) {
     text-align: left;

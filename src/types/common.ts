@@ -21,6 +21,7 @@ export interface Product {
   reserved: number;
   category: Category;
   tags: Tag[];
+  quantity?: number;
 }
 
 export interface ProductCollection {

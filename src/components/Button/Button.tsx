@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import * as styles from './Button.styles';
 
 interface Props {
@@ -6,11 +6,12 @@ interface Props {
   secondary?: boolean;
   title?: string;
   onClick?: () => void;
+  isDisabled?: boolean;
 }
 
-function Button({ title, isLoading, secondary, onClick }: Props) {
+function Button({ title, isLoading, secondary, onClick, isDisabled }: Props) {
   return (
-    <button css={styles.button} onClick={onClick}>
+    <button css={styles.button} onClick={onClick} disabled={isDisabled}>
       {title}
     </button>
   );

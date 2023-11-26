@@ -7,6 +7,8 @@ import { useQuery } from '@tanstack/react-query';
 import { fetchCategories, fetchProducts } from '../../api/shop';
 import Spinner from '../../components/Spinner/Spinner';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
+import { PATHS } from '../../routes/paths';
+import { useNavigate } from 'react-router-dom';
 
 function Shop() {
   const { data: categories, isPending: isCategoriesPending } = useQuery({
@@ -21,6 +23,11 @@ function Shop() {
     queryKey: ['products', { page: 1, pageSize: 6, tag: 'promoted' }],
     queryFn: () => fetchProducts({ page: 1, pageSize: 6, tag: 'promoted' }),
   });
+  const navigate = useNavigate();
+
+  const handleProductClick = (id: string) => {
+    navigate(`${PATHS.SHOP_PRODUCT}/${id}`);
+  };
 
   return (
     <div css={[commonStyles.container, styles.shop]}>
@@ -38,7 +45,12 @@ function Shop() {
         {data &&
           categories &&
           data.products.map((product) => (
-            <ProductThumbnail product={product} withDetails key={product.id} />
+            <ProductThumbnail
+              product={product}
+              withDetails
+              key={product.id}
+              onClick={() => handleProductClick(product.id)}
+            />
           ))}
       </div>
     </div>

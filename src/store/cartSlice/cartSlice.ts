@@ -1,15 +1,19 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootState } from '../store';
 import { Product } from '../../types/common';
+import { setLocalStorage } from '../../utils/setLocalStorage';
 
-export interface CartStore {
-  amount: number;
-  productsInCart: Product[];
+interface ProductInStore extends Product {
+  quantity: number;
 }
 
+export interface CartStore {
+  productsInCart: ProductInStore[];
+}
+
+const initialProductsInCart = localStorage.getItem('cart');
+
 const initialState: CartStore = {
-  amount: 0,
-  productsInCart: [],
+  productsInCart: initialProductsInCart ? JSON.parse(initialProductsInCart) : [],
 };
 
 export const cartSlice = createSlice({
@@ -17,18 +21,34 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action: PayloadAction<Product>) => {
-      state.productsInCart.push(action.payload);
-      state.amount = state.productsInCart.length;
+      state.productsInCart.push({ ...action.payload, quantity: 1 });
+      setLocalStorage('cart', state.productsInCart);
     },
-    removeFromCart: (state, action: PayloadAction<Product>) => {
+    removeFromCart: (state, action: PayloadAction<string>) => {
       state.productsInCart = state.productsInCart.filter(
-        (product) => product.id !== action.payload.id
+        (product) => product.id !== action.payload
       );
-      state.amount = state.productsInCart.length;
+      setLocalStorage('cart', state.productsInCart);
+    },
+    incrementProduct: (state, action: PayloadAction<string>) => {
+      const product = state.productsInCart.find((product) => product.id === action.payload);
+
+      if (product) {
+        product.quantity = product.quantity + 1;
+      }
+      setLocalStorage('cart', state.productsInCart);
+    },
+    decrementProduct: (state, action: PayloadAction<string>) => {
+      const product = state.productsInCart.find((product) => product.id === action.payload);
+
+      if (product) {
+        product.quantity = product.quantity - 1;
+      }
+      setLocalStorage('cart', state.productsInCart);
     },
   },
 });
 
-export const { addToCart, removeFromCart } = cartSlice.actions;
+export const { addToCart, removeFromCart, incrementProduct, decrementProduct } = cartSlice.actions;
 
 export default cartSlice.reducer;

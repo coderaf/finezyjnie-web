@@ -16,6 +16,8 @@ export const navbarLogoWrapper = () => css`
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  width: 50px;
+  height: 50px;
 `;
 
 export const navbarSticky = (theme: Theme) => css`
@@ -49,6 +51,7 @@ export const navbar = (theme: Theme) => css`
   max-width: ${theme.webDimensions.maxPageWidth}px;
   display: flex;
   justify-content: flex-end;
+  align-items: center;
   height: 100%;
   margin: 0 auto;
   padding: 0 16px;

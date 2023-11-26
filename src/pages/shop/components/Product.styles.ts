@@ -4,13 +4,17 @@ const sectionMargins = 64;
 
 export const product = (theme: Theme) => css`
   min-height: calc(
-    100vh - ${theme.webDimensions.navHeight}px - ${sectionMargins}px -
+    100vh - ${sectionMargins}px - ${theme.webDimensions.navHeight}px -
       ${theme.webDimensions.footerHeight}px
   );
 
   @media (min-width: ${theme.breakpoints.tablet}) {
     padding: 16px;
   }
+`;
+
+export const spinnerWrapper = () => css`
+  padding: 32px;
 `;
 
 export const productWrapper = (theme: Theme) => css`
