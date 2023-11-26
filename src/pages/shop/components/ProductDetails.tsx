@@ -8,10 +8,11 @@ interface Props {
   displayPrice: string;
   description: string;
   onCLick: () => void;
-  outOfStock: boolean;
+  outOfStock?: boolean;
+  stock?: number;
 }
 
-function ProductDetails({ name, description, displayPrice, onCLick, outOfStock }: Props) {
+function ProductDetails({ name, description, displayPrice, onCLick, outOfStock, stock }: Props) {
   return (
     <div css={styles.productDetails}>
       <Text variant="dHeadline1" marginBottom={8}>
@@ -20,7 +21,11 @@ function ProductDetails({ name, description, displayPrice, onCLick, outOfStock }
       <Text variant="body20" marginBottom={32}>
         {displayPrice}
       </Text>
-      <Text variant="body16">{description}</Text>
+      <Text variant="body16" marginBottom={16}>
+        {description}
+      </Text>
+
+      <Text variant="body14">Ilość dostępnych: {stock}</Text>
 
       <div css={styles.buttonWrapper}>
         <Button title="DO KOSZYKA" onClick={onCLick} isDisabled={outOfStock} />

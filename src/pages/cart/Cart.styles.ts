@@ -19,3 +19,5 @@ export const cartTotalAmount = (theme: Theme) => css`
   color: ${theme.colors.primary};
   font-weight: bold;
 `;
+
+export const cartPaymentsWrapper = (theme: Theme) => css``;

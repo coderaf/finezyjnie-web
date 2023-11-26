@@ -12,14 +12,23 @@ import { useCart } from '../../../store/cartSlice/useCart';
 
 function Product() {
   const { productId } = useParams();
-  const { productsInCart, addToCart } = useCart();
+  const { addToCart, productsInCart } = useCart();
   const [outOfStock, setOutOfStock] = useState(false);
+  const product = productsInCart.find((product) => String(product.id) === productId);
+  let stock: number | undefined;
 
   const { data, isPending, error } = useQuery({
     queryKey: ['product', productId],
     queryFn: () => fetchProductById(productId!),
   });
 
+  if (product) {
+    stock = product.stock - product.quantity;
+  } else {
+    stock = data?.stock;
+  }
+
+  // todo: extract out of stock logic to a hook
   useEffect(() => {
     const product = productsInCart.find((product) => String(product.id) === productId);
 
@@ -50,6 +59,7 @@ function Product() {
             displayPrice={data.displayPrice}
             description={data.description}
             onCLick={handleAddToCart}
+            stock={stock}
             outOfStock={outOfStock}
           />
         </div>
