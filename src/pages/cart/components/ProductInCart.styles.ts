@@ -68,7 +68,7 @@ export const productInCartPrice = () => css`
   justify-content: space-between;
 `;
 
-export const productInCartRemove = (theme: Theme) => css`
+export const productInCartRemove = () => css`
   width: 5%;
   display: flex;
   align-items: center;

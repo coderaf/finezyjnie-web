@@ -7,7 +7,7 @@ import Text from '../../components/Text/Text';
 import CartHeader from './components/CartHeader';
 
 function Cart() {
-  const { productsInCart, totalProducts, addToCart, removeFromCart, totalAmount } = useCart();
+  const { productsInCart, totalAmount } = useCart();
 
   return (
     <div css={[commonStyles.container, styles.cart]}>

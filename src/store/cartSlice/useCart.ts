@@ -34,6 +34,6 @@ export function useCart() {
     productsInCart,
     addToCart,
     removeFromCart,
-    totalAmount,
+    totalAmount: (totalAmount / 100).toFixed(2),
   };
 }

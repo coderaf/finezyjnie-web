@@ -1,35 +1,36 @@
 import React from 'react';
 import Text from '../../../components/Text/Text';
 import * as styles from './ProductDetails.styles';
-import { useCart } from '../../../store/cartSlice/useCart';
-import { Product } from '../../../types/common';
 import Button from '../../../components/Button/Button';
 
 interface Props {
-  product: Product;
+  name: string;
+  displayPrice: string;
+  description: string;
+  onCLick: () => void;
+  outOfStock: boolean;
 }
 
-function ProductDetails({ product }: Props) {
-  const { addToCart } = useCart();
-
-  const handleAddToCart = () => {
-    addToCart(product);
-  };
-
+function ProductDetails({ name, description, displayPrice, onCLick, outOfStock }: Props) {
   return (
     <div css={styles.productDetails}>
       <Text variant="dHeadline1" marginBottom={8}>
-        {product.name}
+        {name}
       </Text>
       <Text variant="body20" marginBottom={32}>
-        {product.displayPrice}
+        {displayPrice}
       </Text>
-
-      <Text variant="body16">{product.description}</Text>
+      <Text variant="body16">{description}</Text>
 
       <div css={styles.buttonWrapper}>
-        <Button title="DO KOSZYKA" onClick={handleAddToCart} />
+        <Button title="DO KOSZYKA" onClick={onCLick} isDisabled={outOfStock} />
       </div>
+
+      {outOfStock && (
+        <Text variant="body14" color="error">
+          Brak produktu na magazynie
+        </Text>
+      )}
     </div>
   );
 }

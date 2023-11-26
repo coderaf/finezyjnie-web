@@ -28,6 +28,11 @@ export const globalCss = css`
     outline: none;
   }
 
+  select:active {
+    outline: none;
+    background-color: transparent;
+  }
+
   li {
     list-style: none;
   }

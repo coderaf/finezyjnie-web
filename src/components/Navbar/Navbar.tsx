@@ -5,6 +5,7 @@ import { PATHS } from '../../routes/paths';
 import ShoppingCart from '../ShoppingCart/ShoppingCart';
 import MenuItem from '../MenuItem/MenuItem';
 import { useNavigate } from 'react-router-dom';
+import { ReactComponent as Logo } from '../../assets/icons/logo.svg';
 
 function Navbar() {
   const { pathname } = useLocation();
@@ -44,7 +45,7 @@ function Navbar() {
         <div css={styles.navbar}>
           {!isHome && (
             <div css={styles.navbarLogoWrapper} onClick={() => navigate(PATHS.HOME)}>
-              <h1>F</h1>
+              <Logo />
             </div>
           )}
           <ul css={[styles.navbarList, !isHome && styles.navbarShopList]}>
