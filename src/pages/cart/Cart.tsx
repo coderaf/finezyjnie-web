@@ -9,6 +9,7 @@ import CartShipmentMethod from './components/CartShipmentMethod';
 import CartPayments from './components/CartPaymentMethod';
 import Button from '../../components/Button/Button';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { PATHS } from '../../routes/paths';
 
 function Cart() {
   const { productsInCart, totalAmount } = useCart();
@@ -22,7 +23,7 @@ function Cart() {
     if (state) {
       navigate(state.context);
     } else {
-      navigate('/sklep');
+      navigate(PATHS.SHOP);
     }
   };
 
@@ -31,7 +32,7 @@ function Cart() {
       return;
     }
 
-    navigate('/koszyk/twoje-dane', {
+    navigate(PATHS.CART_USER_INFO, {
       state: {
         paymentMethods: {
           paymentMethodId,
