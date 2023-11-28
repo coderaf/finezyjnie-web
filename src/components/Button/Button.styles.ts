@@ -7,7 +7,13 @@ export const button = (secondary?: boolean) => (theme: Theme) => css`
   padding: 16px 32px;
   background-color: ${!secondary ? theme.colors.primary : theme.colors.secondary};
   cursor: pointer;
-  transition: transform 0.2s ease-in-out;
+  border-radius: 10px;
+  transition:
+    background-color 200ms ease-in-out,
+    transform 200ms ease-in-out;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
 
   &:hover {
     background-color: ${!secondary ? theme.colors.primaryHover : theme.colors.secondaryHover};

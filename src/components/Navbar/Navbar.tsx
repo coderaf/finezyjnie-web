@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import * as styles from './Navbar.styles';
-import { NavLink, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { PATHS } from '../../routes/paths';
 import ShoppingCart from '../ShoppingCart/ShoppingCart';
 import MenuItem from '../MenuItem/MenuItem';
@@ -39,6 +39,10 @@ function Navbar() {
     };
   }, [pathname]);
 
+  const handleCartClick = () => {
+    navigate(PATHS.CART, { state: { context: pathname } });
+  };
+
   return (
     <div css={[styles.navbarWrapper, isHome && styles.homeNavbarWrapper]}>
       <nav css={[styles.navbarSticky, isHome && styles.homeNavbar]} ref={headerRef}>
@@ -54,10 +58,8 @@ function Navbar() {
             <MenuItem label="Kontakt" pathname={PATHS.CONTACT} isHome={isHome} />
 
             {!isHome && (
-              <li>
-                <NavLink to={PATHS.CART} css={styles.cartLink}>
-                  <ShoppingCart />
-                </NavLink>
+              <li onClick={handleCartClick}>
+                <ShoppingCart />
               </li>
             )}
           </ul>

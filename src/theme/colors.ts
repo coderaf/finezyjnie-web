@@ -14,7 +14,10 @@ const appColors = {
   borderProductOpacityHigh: '#00000033',
   borderProductOpacityLow: '#000000B3',
   borderProductActive: '#000000',
-  borderSection: 'darkgrey',
+  borderSection: '#a9a9a9',
+  borderInput: '#edf2f7',
+  bgInput: '#f7fafc',
+  input: '#2d3748',
 };
 
 type ColorsType = Record<keyof typeof appColors, string>;

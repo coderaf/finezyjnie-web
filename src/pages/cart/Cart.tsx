@@ -6,12 +6,41 @@ import ProductInCart from './components/ProductInCart';
 import Text from '../../components/Text/Text';
 import CartHeader from './components/CartHeader';
 import CartShipmentMethod from './components/CartShipmentMethod';
-import CartPayments from './components/CartPayments';
+import CartPayments from './components/CartPaymentMethod';
 import Button from '../../components/Button/Button';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 function Cart() {
   const { productsInCart, totalAmount } = useCart();
+  const { state } = useLocation();
+  const navigate = useNavigate();
   const [shipmentPrice, setShipmentPrice] = useState<number | undefined>(undefined);
+  const [shipmentMethodId, setShipmentMethodId] = useState<number | undefined>(undefined);
+  const [paymentMethodId, setPaymentMethodId] = useState<number | undefined>(undefined);
+
+  const handleContinueShopping = () => {
+    if (state) {
+      navigate(state.context);
+    } else {
+      navigate('/sklep');
+    }
+  };
+
+  const handleNextStep = () => {
+    if (productsInCart.length === 0 || !shipmentMethodId || !paymentMethodId) {
+      return;
+    }
+
+    navigate('/koszyk/twoje-dane', {
+      state: {
+        paymentMethods: {
+          paymentMethodId,
+          shipmentMethodId,
+          shipmentPrice,
+        },
+      },
+    });
+  };
 
   return (
     <div css={[commonStyles.container, styles.cart]}>
@@ -30,9 +59,13 @@ function Cart() {
       </div>
 
       <div css={styles.cartPaymentsWrapper}>
-        <CartShipmentMethod setShipmentPrice={setShipmentPrice} />
+        <CartShipmentMethod
+          setShipmentPrice={setShipmentPrice}
+          shipmentMethodId={shipmentMethodId}
+          setShipmentMethodId={setShipmentMethodId}
+        />
 
-        <CartPayments />
+        <CartPayments paymentMethodId={paymentMethodId} setPaymentMethodId={setPaymentMethodId} />
 
         {shipmentPrice && (
           <div css={styles.cartPaymentsSummary}>
@@ -47,11 +80,15 @@ function Cart() {
 
       <div css={styles.cartButtons}>
         <div css={styles.buttonWrapper}>
-          <Button secondary={true} title={'Kontynuuj zakupy'} />
+          <Button secondary={true} title={'Kontynuuj zakupy'} onClick={handleContinueShopping} />
         </div>
 
         <div css={styles.buttonWrapper}>
-          <Button title={'Zamawiam'} isDisabled={productsInCart.length === 0} />
+          <Button
+            title={'Zamawiam'}
+            isDisabled={productsInCart.length === 0 || !shipmentMethodId || !paymentMethodId}
+            onClick={handleNextStep}
+          />
         </div>
       </div>
     </div>

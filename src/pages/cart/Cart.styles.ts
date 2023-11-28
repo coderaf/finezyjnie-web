@@ -8,6 +8,10 @@ export const cart = (theme: Theme) => css`
     100vh - ${sectionMargins}px - ${theme.webDimensions.navHeight}px -
       ${theme.webDimensions.footerHeight}px
   );
+
+  @media (min-width: ${theme.breakpoints.tablet}) {
+    padding: 32px;
+  }
 `;
 
 export const cartTotal = () => css`
@@ -19,10 +23,12 @@ export const cartPaymentsWrapper = (theme: Theme) => css`
   display: flex;
   flex-direction: column;
   gap: 32px;
+  margin-bottom: 64px;
 
   @media (min-width: ${theme.breakpoints.tablet}) {
     flex-direction: row;
     gap: 64px;
+    margin-bottom: 128px;
   }
 `;
 
@@ -30,12 +36,10 @@ export const cartPaymentsSummary = (theme: Theme) => css`
   display: flex;
   justify-content: flex-end;
   gap: 8px;
-  margin-bottom: 64px;
 
   @media (min-width: ${theme.breakpoints.tablet}) {
     width: 100%;
     align-items: flex-end;
-    margin-bottom: 128px;
   }
 `;
 

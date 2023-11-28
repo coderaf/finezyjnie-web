@@ -11,13 +11,14 @@ interface Props {
 
 function ProductInCart({ product }: Props) {
   const { removeFromCart, setProductQuantity } = useCart();
-  const defaultOption = { value: String(product.quantity), label: String(product.quantity) };
-  const [selectedOption, setSelectedOption] = useState(defaultOption);
-  const options = [];
-
-  for (let i = 0; i <= product.stock; i++) {
-    options.push({ value: String(i), label: String(i) });
-  }
+  const [selectedOption, setSelectedOption] = useState({
+    value: String(product.quantity),
+    label: String(product.quantity),
+  });
+  const options = Array.from({ length: product.stock + 1 }, (_, i) => ({
+    value: String(i),
+    label: String(i),
+  }));
 
   const image = product.images.small[0];
 

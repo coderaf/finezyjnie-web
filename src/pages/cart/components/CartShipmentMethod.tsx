@@ -1,41 +1,43 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import * as styles from './CartShipmentMethod.styles';
 import Text from '../../../components/Text/Text';
 import { useQuery } from '@tanstack/react-query';
 import { fetchShipmentMethods } from '../../../api/shop';
+import Spinner from '../../../components/Spinner/Spinner';
+import ErrorMessage from '../../../components/ErrorMessage/ErrorMessage';
 
 interface Props {
   setShipmentPrice?: (price: number | undefined) => void;
+  shipmentMethodId?: number;
+  setShipmentMethodId?: (id: number | undefined) => void;
 }
 
-function CartShipmentMethod({ setShipmentPrice }: Props) {
-  // todo: extract to custom hook or use react-query?
+function CartShipmentMethod({ setShipmentPrice, shipmentMethodId, setShipmentMethodId }: Props) {
   const { data, isPending, error } = useQuery({
     queryKey: ['shipment-methods'],
     queryFn: () => fetchShipmentMethods(),
   });
-  const [selectedMethodId, setSelectedMethodId] = useState<number | undefined>(undefined);
 
   useEffect(() => {
     const id = Number(sessionStorage.getItem('shipment-method-id'));
 
     if (id) {
-      setSelectedMethodId(id);
+      setShipmentMethodId?.(id);
     }
   }, []);
 
   useEffect(() => {
     if (data) {
-      const method = data.find((method) => method.id === selectedMethodId);
+      const method = data.find((method) => method.id === shipmentMethodId);
 
       if (method) {
         setShipmentPrice?.(method.price);
       }
     }
-  }, [data, selectedMethodId]);
+  }, [data, shipmentMethodId]);
 
   const handleProviderClick = (id: number) => {
-    setSelectedMethodId(id);
+    setShipmentMethodId?.(id);
     sessionStorage.setItem('shipment-method-id', id.toString());
   };
 
@@ -45,11 +47,15 @@ function CartShipmentMethod({ setShipmentPrice }: Props) {
         Dostawa:
       </Text>
 
+      {isPending && <Spinner />}
+
+      {error && <ErrorMessage />}
+
       {data?.map((method) => (
         <div css={styles.providerWrapper} key={method.id}>
           <div css={styles.provider} onClick={() => handleProviderClick(method.id)}>
             <span css={styles.dot}>
-              {method.id === selectedMethodId && <span css={styles.selected} />}
+              {method.id === shipmentMethodId && <span css={styles.selected} />}
             </span>
             <Text variant="body16">{method.name}</Text>
           </div>

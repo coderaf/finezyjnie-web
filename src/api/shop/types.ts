@@ -24,7 +24,6 @@ export interface TransactionItem {
   quantity: number;
 }
 
-// Address interface reprezentujący informacje o adresie
 export interface Address {
   firstName: string;
   lastName: string;
@@ -32,11 +31,10 @@ export interface Address {
   number: string;
   city: string;
   postalCode: string;
-  type: 'shipping' | 'billing'; // Dodano typ "billing" dla zróżnicowania adresów
+  type: 'shipping';
   phoneNumber?: string;
 }
 
-// TransactionData interface reprezentujący całe dane transakcji
 export interface TransactionData {
   transactionItems: TransactionItem[];
   paymentMethodId: number;
