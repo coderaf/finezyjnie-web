@@ -3,7 +3,7 @@ import { css, Theme } from '@emotion/react';
 const sectionMargins = 64;
 
 export const shop = (theme: Theme) => css`
-  padding: 32px 16px 32px 32px;
+  padding: 16px;
   display: flex;
   flex-direction: column;
   min-height: calc(
@@ -13,6 +13,7 @@ export const shop = (theme: Theme) => css`
 
   @media (min-width: ${theme.breakpoints.tablet}) {
     flex-direction: row;
+    padding: 32px 16px 32px 32px;
   }
 `;
 

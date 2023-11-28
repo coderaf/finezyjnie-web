@@ -1,5 +1,5 @@
 import apiService from '../apiService';
-import { FetchProductsParams } from './types';
+import { FetchProductsParams, ShipmentMethod, PaymentMethod } from './types';
 import { Product, ProductCollection, Category } from '../../types/common';
 
 const SHOP_API_URL = 'api/shop';
@@ -16,5 +16,15 @@ export const fetchProductById = async (productId: string): Promise<Product> => {
 
 export const fetchCategories = async (): Promise<Category[]> => {
   const response = await apiService.get(`${`${SHOP_API_URL}`}/category`);
+  return response.data;
+};
+
+export const fetchShipmentMethods = async (): Promise<ShipmentMethod[]> => {
+  const response = await apiService.get(`${SHOP_API_URL}/shipment-method`);
+  return response.data;
+};
+
+export const fetchPaymentMethods = async (): Promise<PaymentMethod[]> => {
+  const response = await apiService.get(`${SHOP_API_URL}/payment-method`);
   return response.data;
 };

@@ -7,8 +7,7 @@ export const productInCart = (theme: Theme) => css`
   display: flex;
   gap: 8px;
   justify-content: space-between;
-  margin-bottom: 16px;
-  padding: 8px 0;
+  padding: 16px 0;
   border-bottom: 1px solid ${theme.colors.borderSection};
 
   @media (min-width: ${theme.breakpoints.tablet}) {

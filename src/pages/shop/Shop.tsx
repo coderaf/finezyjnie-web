@@ -46,7 +46,9 @@ function Shop() {
           categories &&
           data.products.map((product) => (
             <ProductThumbnail
-              product={product}
+              name={product.name}
+              displayPrice={product.displayPrice}
+              images={product.images}
               withDetails
               key={product.id}
               onClick={() => handleProductClick(product.id)}

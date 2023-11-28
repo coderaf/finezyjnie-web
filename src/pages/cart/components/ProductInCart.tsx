@@ -10,14 +10,15 @@ interface Props {
 }
 
 function ProductInCart({ product }: Props) {
-  const { removeFromCart, addToCart } = useCart();
-  const defaultOption = { value: String(product.quantity), label: String(product.quantity) };
-  const [selectedOption, setSelectedOption] = useState(defaultOption);
-  const options = [];
-
-  for (let i = 0; i <= product.stock; i++) {
-    options.push({ value: String(i), label: String(i) });
-  }
+  const { removeFromCart, setProductQuantity } = useCart();
+  const [selectedOption, setSelectedOption] = useState({
+    value: String(product.quantity),
+    label: String(product.quantity),
+  });
+  const options = Array.from({ length: product.stock + 1 }, (_, i) => ({
+    value: String(i),
+    label: String(i),
+  }));
 
   const image = product.images.small[0];
 
@@ -30,8 +31,8 @@ function ProductInCart({ product }: Props) {
       return removeFromCart(product.id);
     }
 
+    setProductQuantity({ id: product.id, quantity: Number(newValue.value) });
     setSelectedOption(newValue);
-    addToCart(product);
   };
 
   return (
@@ -47,6 +48,7 @@ function ProductInCart({ product }: Props) {
           value={selectedOption}
           options={options}
           onChange={(newValue: any) => handleQuantityChange(newValue)}
+          isSearchable={false}
         />
       </div>
       <div css={styles.productInCartPrice}>{product.displayPrice}</div>

@@ -46,7 +46,12 @@ function OffersSwiper({ products }: Props) {
       >
         {products.map((product) => (
           <SwiperSlide key={product.id}>
-            <ProductThumbnail product={product} onClick={() => handleProductClick(product.id)} />
+            <ProductThumbnail
+              name={product.name}
+              displayPrice={product.displayPrice}
+              images={product.images}
+              onClick={() => handleProductClick(product.id)}
+            />
           </SwiperSlide>
         ))}
       </Swiper>

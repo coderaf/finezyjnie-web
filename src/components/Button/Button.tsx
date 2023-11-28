@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { ButtonHTMLAttributes } from 'react';
 import * as styles from './Button.styles';
 
-interface Props {
+interface Props extends ButtonHTMLAttributes<any> {
   isLoading?: boolean;
   secondary?: boolean;
   title?: string;
@@ -9,9 +9,10 @@ interface Props {
   isDisabled?: boolean;
 }
 
-function Button({ title, isLoading, secondary, onClick, isDisabled }: Props) {
+// todo: add loading state
+function Button({ title, isLoading, secondary, onClick, isDisabled, ...restProps }: Props) {
   return (
-    <button css={styles.button} onClick={onClick} disabled={isDisabled}>
+    <button css={styles.button(secondary)} onClick={onClick} disabled={isDisabled} {...restProps}>
       {title}
     </button>
   );
