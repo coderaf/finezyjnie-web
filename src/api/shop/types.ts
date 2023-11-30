@@ -27,12 +27,12 @@ export interface TransactionItem {
 export interface Address {
   firstName: string;
   lastName: string;
-  street?: string;
-  number: string;
+  street: string;
   city: string;
   postalCode: string;
-  type: 'shipping';
-  phoneNumber?: string;
+  type: string;
+  phoneNumber: string;
+  email: string;
 }
 
 export interface TransactionData {
@@ -40,4 +40,12 @@ export interface TransactionData {
   paymentMethodId: number;
   shipmentMethodId: number;
   addresses: Address[];
+  notes?: string;
+}
+
+export interface ShopConfig {
+  delivery_time: string;
+  bank_transfer_account_number: string;
+  bank_transfer_account_name: string;
+  bank_transfer_address: string;
 }

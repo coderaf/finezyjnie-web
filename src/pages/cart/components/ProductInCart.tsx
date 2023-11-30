@@ -4,12 +4,14 @@ import { Product } from '../../../types/common';
 import { useCart } from '../../../store/cartSlice/useCart';
 import Select from '../../../components/Select/Select';
 import Text from '../../../components/Text/Text';
+import { BsTrash } from 'react-icons/bs';
 
 interface Props {
   product: Product;
+  isEditable?: boolean;
 }
 
-function ProductInCart({ product }: Props) {
+function ProductInCart({ product, isEditable = true }: Props) {
   const { removeFromCart, setProductQuantity } = useCart();
   const [selectedOption, setSelectedOption] = useState({
     value: String(product.quantity),
@@ -49,13 +51,17 @@ function ProductInCart({ product }: Props) {
           options={options}
           onChange={(newValue: any) => handleQuantityChange(newValue)}
           isSearchable={false}
+          isDisabled={!isEditable}
         />
       </div>
+
       <div css={styles.productInCartPrice}>{product.displayPrice}</div>
       <div css={styles.productInCartRemove} onClick={handleRemoveFromCart}>
-        <Text variant="body16" color="error">
-          X
-        </Text>
+        {isEditable && (
+          <Text variant="body16" color="error">
+            <BsTrash />
+          </Text>
+        )}
       </div>
     </div>
   );

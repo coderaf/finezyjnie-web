@@ -67,10 +67,19 @@ export const productInCartPrice = () => css`
   justify-content: space-between;
 `;
 
-export const productInCartRemove = () => css`
+export const productInCartRemove = (theme: Theme) => css`
   width: 5%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
+
+  @media (min-width: ${theme.breakpoints.tablet}) {
+    padding-left: 16px;
+
+    svg {
+      width: 20px;
+      height: auto;
+    }
+  }
 `;

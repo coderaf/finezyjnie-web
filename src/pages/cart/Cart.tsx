@@ -1,79 +1,51 @@
 import React, { useState } from 'react';
-import * as commonStyles from '../../styles/commonStyles';
+import { container, section } from '../../styles/commonStyles';
 import * as styles from './Cart.styles';
 import { useCart } from '../../store/cartSlice/useCart';
-import ProductInCart from './components/ProductInCart';
 import Text from '../../components/Text/Text';
-import CartHeader from './components/CartHeader';
 import CartShipmentMethod from './components/CartShipmentMethod';
 import CartPayments from './components/CartPaymentMethod';
 import Button from '../../components/Button/Button';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { PATHS } from '../../routes/paths';
+import CartContent from './components/CartContent';
 
 function Cart() {
   const { productsInCart, totalAmount } = useCart();
-  const { state } = useLocation();
   const navigate = useNavigate();
   const [shipmentPrice, setShipmentPrice] = useState<number | undefined>(undefined);
-  const [shipmentMethodId, setShipmentMethodId] = useState<number | undefined>(undefined);
-  const [paymentMethodId, setPaymentMethodId] = useState<number | undefined>(undefined);
 
-  const handleContinueShopping = () => {
-    if (state) {
-      navigate(state.context);
-    } else {
-      navigate(PATHS.SHOP);
-    }
-  };
+  const checkoutPrice = shipmentPrice
+    ? (Number(totalAmount) + shipmentPrice / 100).toFixed(2)
+    : totalAmount;
 
   const handleNextStep = () => {
-    if (productsInCart.length === 0 || !shipmentMethodId || !paymentMethodId) {
+    if (productsInCart.length === 0 || !shipmentPrice) {
       return;
     }
+    navigate(PATHS.CART_USER_INFO);
+  };
 
-    navigate(PATHS.CART_USER_INFO, {
-      state: {
-        paymentMethods: {
-          paymentMethodId,
-          shipmentMethodId,
-          shipmentPrice,
-        },
-      },
-    });
+  const handleContinueShopping = () => {
+    navigate(PATHS.SHOP);
   };
 
   return (
-    <div css={[commonStyles.container, styles.cart]}>
-      <CartHeader />
-
-      {productsInCart.map((product) => (
-        <ProductInCart key={product.id} product={product} />
-      ))}
-
-      <div css={styles.cartTotal}>
-        <Text variant="body16" marginBottom={8}>
-          Koszyk: {totalAmount} zł
-        </Text>
-
-        {shipmentPrice && <Text variant="body16">Dostawa: {shipmentPrice / 100} zł</Text>}
-      </div>
+    <div css={[container, section]}>
+      <CartContent
+        productsInCart={productsInCart}
+        totalAmount={totalAmount}
+        shipmentPrice={undefined}
+      />
 
       <div css={styles.cartPaymentsWrapper}>
-        <CartShipmentMethod
-          setShipmentPrice={setShipmentPrice}
-          shipmentMethodId={shipmentMethodId}
-          setShipmentMethodId={setShipmentMethodId}
-        />
-
-        <CartPayments paymentMethodId={paymentMethodId} setPaymentMethodId={setPaymentMethodId} />
-
+        <CartShipmentMethod setShipmentPrice={setShipmentPrice} />
+        <CartPayments />
         {shipmentPrice && (
           <div css={styles.cartPaymentsSummary}>
             <Text variant="body20">Do zapłaty: </Text>
             <Text variant="subtitle20" color="primary">
-              {shipmentPrice ? (Number(totalAmount) + shipmentPrice / 100).toFixed(2) : totalAmount}{' '}
-              zł
+              {checkoutPrice} zł
             </Text>
           </div>
         )}
@@ -87,7 +59,7 @@ function Cart() {
         <div css={styles.buttonWrapper}>
           <Button
             title={'Zamawiam'}
-            isDisabled={productsInCart.length === 0 || !shipmentMethodId || !paymentMethodId}
+            isDisabled={productsInCart.length === 0 || !shipmentPrice}
             onClick={handleNextStep}
           />
         </div>

@@ -1,44 +1,44 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import * as styles from './CartShipmentMethod.styles';
 import Text from '../../../components/Text/Text';
 import { useQuery } from '@tanstack/react-query';
 import { fetchShipmentMethods } from '../../../api/shop';
 import Spinner from '../../../components/Spinner/Spinner';
 import ErrorMessage from '../../../components/ErrorMessage/ErrorMessage';
+import { ShipmentMethod } from '../../../api/shop/types';
 
 interface Props {
-  setShipmentPrice?: (price: number | undefined) => void;
-  shipmentMethodId?: number;
-  setShipmentMethodId?: (id: number | undefined) => void;
+  setShipmentPrice: (price: number) => void;
 }
 
-function CartShipmentMethod({ setShipmentPrice, shipmentMethodId, setShipmentMethodId }: Props) {
+function CartShipmentMethod({ setShipmentPrice }: Props) {
+  const [shipmentMethod, setShipmentMethod] = useState<ShipmentMethod | undefined>(
+    sessionStorage.getItem('shipmentMethod')
+      ? JSON.parse(sessionStorage.getItem('shipmentMethod') as string)
+      : undefined
+  );
+
   const { data, isPending, error } = useQuery({
     queryKey: ['shipment-methods'],
     queryFn: () => fetchShipmentMethods(),
   });
 
   useEffect(() => {
-    const id = Number(sessionStorage.getItem('shipment-method-id'));
-
-    if (id) {
-      setShipmentMethodId?.(id);
+    if (data && !shipmentMethod) {
+      setShipmentMethod(data[0]);
+      setShipmentPrice(data[0].price);
+      sessionStorage.setItem('shipmentMethod', JSON.stringify(data[0]));
     }
-  }, []);
 
-  useEffect(() => {
-    if (data) {
-      const method = data.find((method) => method.id === shipmentMethodId);
-
-      if (method) {
-        setShipmentPrice?.(method.price);
-      }
+    if (data && shipmentMethod) {
+      setShipmentPrice(shipmentMethod.price);
     }
-  }, [data, shipmentMethodId]);
+  }, [data, shipmentMethod]);
 
-  const handleProviderClick = (id: number) => {
-    setShipmentMethodId?.(id);
-    sessionStorage.setItem('shipment-method-id', id.toString());
+  const handleProviderClick = (method: ShipmentMethod) => {
+    setShipmentMethod(method);
+    setShipmentPrice(method.price);
+    sessionStorage.setItem('shipmentMethod', JSON.stringify(method));
   };
 
   return (
@@ -53,9 +53,9 @@ function CartShipmentMethod({ setShipmentPrice, shipmentMethodId, setShipmentMet
 
       {data?.map((method) => (
         <div css={styles.providerWrapper} key={method.id}>
-          <div css={styles.provider} onClick={() => handleProviderClick(method.id)}>
+          <div css={styles.provider} onClick={() => handleProviderClick(method)}>
             <span css={styles.dot}>
-              {method.id === shipmentMethodId && <span css={styles.selected} />}
+              {method.id === shipmentMethod?.id && <span css={styles.selected} />}
             </span>
             <Text variant="body16">{method.name}</Text>
           </div>

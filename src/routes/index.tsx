@@ -7,8 +7,9 @@ import Blog from '../pages/blog/Blog';
 import Contact from '../pages/contact/Contact';
 import Product from '../pages/shop/components/Product';
 import Cart from '../pages/cart/Cart';
-import CartUserInfo from '../pages/cart/components/CartUserInfo';
+import CartUserAddressForm from '../pages/cart/components/CartUserAddressForm';
 import CartSummary from '../pages/cart/components/CartSummary';
+import CartPayments from '../pages/cart/components/CartPayments';
 
 export const routes: RouteObject[] = [
   { path: PATHS.HOME, element: <Home /> },
@@ -30,11 +31,15 @@ export const routes: RouteObject[] = [
   },
   {
     path: PATHS.CART_USER_INFO,
-    element: <CartUserInfo />,
+    element: <CartUserAddressForm />,
   },
   {
     path: PATHS.CART_SUMMARY,
     element: <CartSummary />,
+  },
+  {
+    path: PATHS.CART_PAYMENTS,
+    element: <CartPayments />,
   },
   { path: PATHS.BLOG, element: <Blog /> },
   { path: PATHS.CONTACT, element: <Contact /> },

@@ -1,33 +1,34 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import * as styles from './CartPaymentMethod.styles';
 import Text from '../../../components/Text/Text';
 import { useQuery } from '@tanstack/react-query';
 import { fetchPaymentMethods } from '../../../api/shop';
 import Spinner from '../../../components/Spinner/Spinner';
 import ErrorMessage from '../../../components/ErrorMessage/ErrorMessage';
+import { PaymentMethod } from '../../../api/shop/types';
 
-interface Props {
-  paymentMethodId?: number;
-  setPaymentMethodId?: (id: number | undefined) => void;
-}
+function CartPaymentMethod() {
+  const [paymentMethod, setPaymentMethod] = useState<PaymentMethod | undefined>(
+    sessionStorage.getItem('paymentMethod')
+      ? JSON.parse(sessionStorage.getItem('paymentMethod') as string)
+      : undefined
+  );
 
-function CartPaymentMethod({ paymentMethodId, setPaymentMethodId }: Props) {
   const { data, isPending, error } = useQuery({
     queryKey: ['payment-methods'],
     queryFn: () => fetchPaymentMethods(),
   });
 
   useEffect(() => {
-    const id = Number(sessionStorage.getItem('shipment-method-id'));
-
-    if (id) {
-      setPaymentMethodId?.(id);
+    if (data && !paymentMethod) {
+      setPaymentMethod(data[0]);
+      sessionStorage.setItem('paymentMethod', JSON.stringify(data[0]));
     }
-  }, []);
+  }, [data, paymentMethod]);
 
-  const handleProviderClick = (id: number) => {
-    setPaymentMethodId?.(id);
-    sessionStorage.setItem('shipment-method-id', id.toString());
+  const handleProviderClick = (method: PaymentMethod) => {
+    setPaymentMethod(method);
+    sessionStorage.setItem('paymentMethod', JSON.stringify(method));
   };
 
   return (
@@ -42,9 +43,9 @@ function CartPaymentMethod({ paymentMethodId, setPaymentMethodId }: Props) {
 
       {data?.map((method) => (
         <div css={styles.providerWrapper} key={method.id}>
-          <div css={styles.provider} onClick={() => handleProviderClick(method.id)}>
+          <div css={styles.provider} onClick={() => handleProviderClick(method)}>
             <span css={styles.dot}>
-              {method.id === paymentMethodId && <span css={styles.selected} />}
+              {method.id === paymentMethod?.id && <span css={styles.selected} />}
             </span>
             <Text variant="body16">{method.name}</Text>
           </div>

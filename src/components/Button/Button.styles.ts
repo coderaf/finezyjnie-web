@@ -2,6 +2,7 @@ import { css, Theme } from '@emotion/react';
 
 export const button = (secondary?: boolean) => (theme: Theme) => css`
   width: 100%;
+  max-height: 50px;
   border: 0;
   color: ${theme.colors.white};
   padding: 16px 32px;
@@ -14,6 +15,10 @@ export const button = (secondary?: boolean) => (theme: Theme) => css`
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 
   &:hover {
     background-color: ${!secondary ? theme.colors.primaryHover : theme.colors.secondaryHover};

@@ -9,27 +9,45 @@ interface Props extends DropdownProps {
   errorMessage?: string | string[];
 }
 
+interface ControlPropsSubset {
+  isFocused: boolean;
+  menuIsOpen: boolean;
+  isDisabled: boolean;
+}
+
 function Select({ label, error, errorMessage, ...restProps }: Props) {
   const { isMobile } = useMediaQueries();
 
+  const getBorderColor = ({ isFocused, menuIsOpen, isDisabled }: ControlPropsSubset) => {
+    if (isDisabled) {
+      return colors.inputDisabled;
+    }
+
+    if (error) {
+      return colors.error;
+    }
+
+    if (isFocused || menuIsOpen) {
+      return colors.primary;
+    }
+
+    return colors.secondary;
+  };
+
   const colourStyles: StylesConfig<any> = {
     indicatorSeparator: () => ({ display: 'none' }),
-    dropdownIndicator: (styles) => ({
+    dropdownIndicator: (styles, { isDisabled }) => ({
       ...styles,
-      color: colors.primary,
+      color: isDisabled ? colors.inputDisabled : colors.primary,
       '&:hover': {
-        color: colors.primary,
+        color: isDisabled ? colors.inputDisabled : colors.primary,
       },
     }),
-    control: (styles, { isFocused, menuIsOpen }) => ({
+    control: (styles, { isFocused, menuIsOpen, isDisabled }) => ({
       ...styles,
-      backgroundColor: 'transparent',
+      backgroundColor: isDisabled ? '#f2f2f2' : 'transparent',
       cursor: 'pointer',
-      borderColor: error
-        ? colors.error
-        : isFocused || menuIsOpen
-        ? colors.primary
-        : colors.secondary,
+      borderColor: getBorderColor({ isFocused, menuIsOpen, isDisabled }),
       borderRadius: '10px',
       boxShadow: 'unset',
       '&:focus-within': {
@@ -57,8 +75,15 @@ function Select({ label, error, errorMessage, ...restProps }: Props) {
         color: isSelected ? colors.white : colors.black,
       },
     }),
-    singleValue: (styles) => ({ ...styles, color: colors.black }),
-    container: (styles) => ({ ...styles, width: '100%', maxWidth: '100px' }),
+    singleValue: (styles, { isDisabled }) => ({
+      ...styles,
+      color: isDisabled ? colors.inputValueDisabled : colors.black,
+    }),
+    container: (styles) => ({
+      ...styles,
+      width: '100%',
+      maxWidth: '100px',
+    }),
   };
 
   return (

@@ -14,6 +14,11 @@ export const footerContent = (theme: Theme) => css`
   justify-content: flex-end;
   align-items: center;
   gap: 8px;
+  padding: 0 16px;
+
+  @media (min-width: ${theme.breakpoints.desktop}) {
+    padding: 0 32px;
+  }
 
   svg {
     cursor: pointer;
