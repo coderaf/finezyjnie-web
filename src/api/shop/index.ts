@@ -3,7 +3,7 @@ import {
   FetchProductsParams,
   ShipmentMethod,
   PaymentMethod,
-  OrderDetails,
+  ShopConfig,
   TransactionData,
 } from './types';
 import { Product, ProductCollection, Category } from '../../types/common';
@@ -35,7 +35,7 @@ export const fetchPaymentMethods = async (): Promise<PaymentMethod[]> => {
   return response.data;
 };
 
-export const fetchShopConfig = async (): Promise<OrderDetails> => {
+export const fetchShopConfig = async (): Promise<ShopConfig> => {
   const response = await apiService.get(`${SHOP_API_URL}/config`);
   return response.data;
 };

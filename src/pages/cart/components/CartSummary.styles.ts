@@ -34,6 +34,7 @@ export const addressSpacing = () => css`
 
 export const changeAddress = () => css`
   cursor: pointer;
+  width: 60px;
 `;
 
 export const infoValue = () => css`

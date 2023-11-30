@@ -5,15 +5,15 @@ import { colors } from '../../theme/colors';
 interface Props {
   size?: number;
   color?: string;
-  loading?: boolean;
   override?: CSSProperties;
+  isLoading?: boolean;
 }
 
-function Spinner({ color = colors.primary, loading = true, override, size = 40 }: Props) {
+function Spinner({ color = colors.primary, override, size = 40, isLoading = true }: Props) {
   return (
     <MoonLoad
       color={color}
-      loading={loading}
+      loading={isLoading}
       cssOverride={override}
       size={size}
       aria-label="Loading Spinner"

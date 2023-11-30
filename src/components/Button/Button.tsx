@@ -1,5 +1,7 @@
 import React, { ButtonHTMLAttributes } from 'react';
 import * as styles from './Button.styles';
+import Spinner from '../Spinner/Spinner';
+import { colors } from '../../theme/colors';
 
 interface Props extends ButtonHTMLAttributes<any> {
   isLoading?: boolean;
@@ -9,11 +11,10 @@ interface Props extends ButtonHTMLAttributes<any> {
   isDisabled?: boolean;
 }
 
-// todo: add loading state
-function Button({ title, isLoading, secondary, onClick, isDisabled, ...restProps }: Props) {
+function Button({ title, isLoading = false, secondary, onClick, isDisabled, ...restProps }: Props) {
   return (
     <button css={styles.button(secondary)} onClick={onClick} disabled={isDisabled} {...restProps}>
-      {title}
+      {isLoading ? <Spinner isLoading={true} size={20} color={colors.black} /> : title}
     </button>
   );
 }

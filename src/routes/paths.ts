@@ -7,6 +7,7 @@ const appPathConstants = {
   CART: '/koszyk',
   CART_USER_INFO: '/koszyk/twoje-dane',
   CART_SUMMARY: '/koszyk/podsumowanie',
+  CART_PAYMENTS: '/koszyk/platnosci',
 };
 
 export type PathConstantsType = Record<keyof typeof appPathConstants, string>;

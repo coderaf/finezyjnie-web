@@ -13,6 +13,7 @@ interface TextProps {
   marginTop?: number;
   marginLeft?: number;
   marginRight?: number;
+  align?: 'left' | 'center' | 'right';
 }
 
 function Text({
@@ -26,6 +27,7 @@ function Text({
   marginTop,
   marginLeft,
   marginRight,
+  align,
 }: TextProps): ReactElement {
   const variantConfig = typography.variants[variant];
 
@@ -56,6 +58,7 @@ function Text({
         marginTop: marginTop ? `${marginTop}px` : undefined,
         marginLeft: marginLeft ? `${marginLeft}px` : undefined,
         marginRight: marginRight ? `${marginRight}px` : undefined,
+        textAlign: align,
         ...style,
         ...otherStyles,
       }}

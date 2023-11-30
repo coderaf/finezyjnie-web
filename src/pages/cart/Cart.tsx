@@ -14,15 +14,13 @@ function Cart() {
   const { productsInCart, totalAmount } = useCart();
   const navigate = useNavigate();
   const [shipmentPrice, setShipmentPrice] = useState<number | undefined>(undefined);
-  const [shipmentMethodId, setShipmentMethodId] = useState<number | undefined>(undefined);
-  const [paymentMethodId, setPaymentMethodId] = useState<number | undefined>(undefined);
 
   const checkoutPrice = shipmentPrice
     ? (Number(totalAmount) + shipmentPrice / 100).toFixed(2)
     : totalAmount;
 
   const handleNextStep = () => {
-    if (productsInCart.length === 0 || !shipmentMethodId || !paymentMethodId) {
+    if (productsInCart.length === 0 || !shipmentPrice) {
       return;
     }
     navigate(PATHS.CART_USER_INFO);
@@ -37,16 +35,12 @@ function Cart() {
       <CartContent
         productsInCart={productsInCart}
         totalAmount={totalAmount}
-        shipmentPrice={shipmentPrice}
+        shipmentPrice={undefined}
       />
 
       <div css={styles.cartPaymentsWrapper}>
-        <CartShipmentMethod
-          setShipmentPrice={setShipmentPrice}
-          shipmentMethodId={shipmentMethodId}
-          setShipmentMethodId={setShipmentMethodId}
-        />
-        <CartPayments paymentMethodId={paymentMethodId} setPaymentMethodId={setPaymentMethodId} />
+        <CartShipmentMethod setShipmentPrice={setShipmentPrice} />
+        <CartPayments />
         {shipmentPrice && (
           <div css={styles.cartPaymentsSummary}>
             <Text variant="body20">Do zapłaty: </Text>
@@ -65,9 +59,7 @@ function Cart() {
         <div css={styles.buttonWrapper}>
           <Button
             title={'Zamawiam'}
-            isDisabled={
-              productsInCart.length === 0 || !shipmentMethodId || !paymentMethodId || !shipmentPrice
-            }
+            isDisabled={productsInCart.length === 0 || !shipmentPrice}
             onClick={handleNextStep}
           />
         </div>
