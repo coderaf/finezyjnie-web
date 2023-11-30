@@ -18,16 +18,26 @@ function CartPaymentMethod({ paymentMethodId, setPaymentMethodId }: Props) {
   });
 
   useEffect(() => {
-    const id = Number(sessionStorage.getItem('shipment-method-id'));
+    const id = Number(sessionStorage.getItem('paymentMethodId'));
 
     if (id) {
       setPaymentMethodId?.(id);
     }
   }, []);
 
+  useEffect(() => {
+    if (data) {
+      const method = data.find((method) => method.id === paymentMethodId);
+
+      if (method) {
+        sessionStorage.setItem('paymentMethodName', method.name.toString());
+      }
+    }
+  }, [data, paymentMethodId]);
+
   const handleProviderClick = (id: number) => {
     setPaymentMethodId?.(id);
-    sessionStorage.setItem('shipment-method-id', id.toString());
+    sessionStorage.setItem('paymentMethodId', id.toString());
   };
 
   return (

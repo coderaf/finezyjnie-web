@@ -7,7 +7,6 @@ import Layout from './components/Layout/Layout';
 import { routes } from './routes';
 import ErrorPage from './pages/error-page/ErrorPage';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import 'swiper/css';
@@ -32,7 +31,6 @@ function App() {
         <ToastContainer limit={2} />
         <RouterProvider router={router} />
       </ThemeProvider>
-      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
 }

@@ -7,8 +7,4 @@ export const cartUserInfo = (theme: Theme) => css`
     padding: 32px;
     max-width: 1000px;
   }
-
-  @media (min-width: ${theme.breakpoints.desktop}) {
-    max-width: 1000px;
-  }
 `;

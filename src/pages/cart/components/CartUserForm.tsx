@@ -6,9 +6,8 @@ import Checkbox from '../../../components/Checkbox/Checkbox';
 import * as styles from './CartUserForm.styles';
 import Text from '../../../components/Text/Text';
 import Button from '../../../components/Button/Button';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { UserForm } from './CartUserInfo';
-import { PATHS } from '../../../routes/paths';
 import { useMediaQueries } from '../../../hooks/useMediaQueries';
 
 interface Props {
@@ -17,18 +16,22 @@ interface Props {
   initialValues?: UserForm;
 }
 
-function ScrollToTop() {
+function ScrollToTopError() {
   const { errors, isSubmitting } = useFormikContext<UserForm>();
   const { isMobile } = useMediaQueries();
 
   useEffect(() => {
     if (isSubmitting) {
       if (isMobile && (errors.firstName || errors.lastName || errors.email || errors.phoneNumber)) {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        // @ts-ignore
+        // https://github.com/microsoft/TypeScript-DOM-lib-generator/issues/1195
+        window.scrollTo({ top: 0, behavior: 'instant' });
       }
 
       if (!isMobile && (errors.firstName || errors.lastName || errors.acceptedTerms)) {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        // @ts-ignore
+        // https://github.com/microsoft/TypeScript-DOM-lib-generator/issues/1195
+        window.scrollTo({ top: 0, behavior: 'instant' });
       }
     }
   }, [errors, isSubmitting]);
@@ -37,15 +40,6 @@ function ScrollToTop() {
 }
 
 function CartUserForm({ onSubmit, onPreviousStep, initialValues }: Props) {
-  const { state } = useLocation();
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (!state) {
-      navigate(PATHS.CART);
-    }
-  }, []);
-
   return (
     <Formik
       initialValues={
@@ -143,7 +137,7 @@ function CartUserForm({ onSubmit, onPreviousStep, initialValues }: Props) {
           </div>
         </div>
 
-        <ScrollToTop />
+        <ScrollToTopError />
       </Form>
     </Formik>
   );

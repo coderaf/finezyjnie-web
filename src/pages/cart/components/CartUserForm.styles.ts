@@ -26,14 +26,19 @@ export const userDataWrapper = () => css`
   max-width: 400px;
 `;
 
-export const cartButtons = () => css`
+export const cartButtons = (theme: Theme) => css`
   display: flex;
   justify-content: space-between;
   gap: 32px;
   height: 100%;
   max-height: 50px;
   white-space: nowrap;
-  margin-top: 64px;
+  margin: 64px auto 0 auto;
+  max-width: 400px;
+
+  @media (min-width: ${theme.breakpoints.tablet}) {
+    max-width: unset;
+  }
 `;
 
 export const buttonWrapper = () => css`

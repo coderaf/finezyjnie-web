@@ -16,6 +16,8 @@ const appColors = {
   borderProductActive: '#000000',
   borderSection: '#a9a9a9',
   borderInput: '#edf2f7',
+  inputDisabled: '#CCCCCC',
+  inputValueDisabled: '#999999',
   bgInput: '#f7fafc',
   input: '#2d3748',
 };

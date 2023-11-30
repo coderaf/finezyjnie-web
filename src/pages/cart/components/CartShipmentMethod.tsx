@@ -19,7 +19,7 @@ function CartShipmentMethod({ setShipmentPrice, shipmentMethodId, setShipmentMet
   });
 
   useEffect(() => {
-    const id = Number(sessionStorage.getItem('shipment-method-id'));
+    const id = Number(sessionStorage.getItem('shipmentMethodId'));
 
     if (id) {
       setShipmentMethodId?.(id);
@@ -32,13 +32,15 @@ function CartShipmentMethod({ setShipmentPrice, shipmentMethodId, setShipmentMet
 
       if (method) {
         setShipmentPrice?.(method.price);
+        sessionStorage.setItem('shipmentMethodPrice', method.price.toString());
+        sessionStorage.setItem('shipmentMethodName', method.name.toString());
       }
     }
   }, [data, shipmentMethodId]);
 
   const handleProviderClick = (id: number) => {
     setShipmentMethodId?.(id);
-    sessionStorage.setItem('shipment-method-id', id.toString());
+    sessionStorage.setItem('shipmentMethodId', id.toString());
   };
 
   return (

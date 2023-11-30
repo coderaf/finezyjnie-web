@@ -1,24 +1,5 @@
 import { css, Theme } from '@emotion/react';
 
-const sectionMargins = 64;
-
-export const cart = (theme: Theme) => css`
-  padding: 16px;
-  min-height: calc(
-    100vh - ${sectionMargins}px - ${theme.webDimensions.navHeight}px -
-      ${theme.webDimensions.footerHeight}px
-  );
-
-  @media (min-width: ${theme.breakpoints.tablet}) {
-    padding: 32px;
-  }
-`;
-
-export const cartTotal = () => css`
-  text-align: right;
-  margin: 16px 0;
-`;
-
 export const cartPaymentsWrapper = (theme: Theme) => css`
   display: flex;
   flex-direction: column;

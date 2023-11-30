@@ -50,6 +50,7 @@ export const globalCss = css`
     outline: none;
   }
 
+  //todo: extract it to checkbox styles component
   input[type='checkbox'] {
     display: inline-block;
     height: 1rem;

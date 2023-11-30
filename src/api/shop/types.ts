@@ -28,7 +28,6 @@ export interface Address {
   firstName: string;
   lastName: string;
   street?: string;
-  number: string;
   city: string;
   postalCode: string;
   type: 'shipping';
@@ -40,4 +39,11 @@ export interface TransactionData {
   paymentMethodId: number;
   shipmentMethodId: number;
   addresses: Address[];
+}
+
+export interface OrderDetails {
+  delivery_time: string;
+  bank_transfer_account_number: string;
+  bank_transfer_account_name: string;
+  bank_transfer_address: string;
 }

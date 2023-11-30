@@ -1,5 +1,5 @@
 import React from 'react';
-import * as commonStyles from '../.././styles/commonStyles';
+import { container, section } from '../../styles/commonStyles';
 import * as styles from './Shop.styles';
 import Categories from './components/Categories';
 import ProductThumbnail from '../../components/ProductThumbnail/ProductThumbnail';
@@ -30,7 +30,7 @@ function Shop() {
   };
 
   return (
-    <div css={[commonStyles.container, styles.shop]}>
+    <div css={[container, section, styles.shop]}>
       {categories && data && (
         <div css={[styles.categoriesWrapper]}>
           <Categories categories={categories} />
