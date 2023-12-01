@@ -29,9 +29,7 @@ function CartSummary() {
   const mutation = useMutation({
     mutationFn: (newTransaction: TransactionData) => createTransaction(newTransaction),
     onSuccess: () => {
-      sessionStorage.clear();
-      localStorage.clear();
-
+      showToast('success', 'Twoje zamówienie zostało żłożone!');
       navigate(PATHS.CART_PAYMENTS, { state: { config: data } });
     },
     onError: () => {

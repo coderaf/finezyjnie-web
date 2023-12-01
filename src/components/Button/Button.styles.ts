@@ -18,7 +18,6 @@ export const button = (secondary?: boolean) => (theme: Theme) => css`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
 
   &:hover {
     background-color: ${!secondary ? theme.colors.primaryHover : theme.colors.secondaryHover};

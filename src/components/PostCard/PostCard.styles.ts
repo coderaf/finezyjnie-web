@@ -1,10 +1,9 @@
 import { css, Theme } from '@emotion/react';
 
-export const post = (theme: Theme) => css`
+export const postCard = (theme: Theme) => css`
   width: 100%;
   max-width: 450px;
   // this style is related to UpdatesAndBio section min-height
-  //
   min-height: 400px;
   display: flex;
   flex-direction: column;
@@ -28,21 +27,17 @@ export const post = (theme: Theme) => css`
   }
 `;
 
-export const postHeader = () => css`
+export const postCardHeader = () => css`
   padding: 16px;
 `;
 
-export const postImage = (desktopImg: string, mobileImg: string) => (theme: Theme) => css`
-  background-image: url(${desktopImg});
+export const postCardImage = (mobileImg: string) => () => css`
+  background-image: url(${mobileImg});
   background-size: cover;
   background-position: center;
   height: 200px;
-
-  @media (max-width: ${theme.breakpoints.tablet}) {
-    background-image: url(${mobileImg});
-  }
 `;
 
-export const postContent = () => css`
+export const postCardContent = () => css`
   padding: 16px;
 `;

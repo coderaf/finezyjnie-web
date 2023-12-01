@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { container, section } from '../../../styles/commonStyles';
 import { ShopConfig } from '../../../api/shop/types';
 import { useLocation } from 'react-router-dom';
 import * as styles from './CartPayments.styles';
 import Text from '../../../components/Text/Text';
+import { useCart } from '../../../store/cartSlice/useCart';
 
 function CartPayments() {
   const { state }: { state: { config: ShopConfig } } = useLocation();
+  const { clearCart } = useCart();
+
+  useEffect(() => {
+    clearCart();
+  }, []);
 
   return (
     <div css={[container, section]}>

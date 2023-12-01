@@ -3,6 +3,7 @@ export interface FetchProductsParams {
   tags?: string[];
   page?: number;
   pageSize?: number;
+  category?: string;
 }
 
 export interface ShipmentMethod {

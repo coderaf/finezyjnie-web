@@ -1,6 +1,5 @@
 import React from 'react';
 import Text from '../../../components/Text/Text';
-import { pageContent } from '../pageContent';
 import Category from './Category';
 import { Category as CategoryProps } from '../../../types/common';
 
@@ -12,7 +11,7 @@ function Categories({ categories }: Props) {
   return (
     <>
       <Text variant="dHeadline2" marginBottom={16}>
-        {pageContent.categoriesTitle}
+        Wybierz kategorie
       </Text>
 
       {categories.map((category) => (
