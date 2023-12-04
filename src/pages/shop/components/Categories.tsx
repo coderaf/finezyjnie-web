@@ -1,6 +1,5 @@
 import React from 'react';
 import Text from '../../../components/Text/Text';
-import { pageContent } from '../pageContent';
 import Category from './Category';
 import { Category as CategoryProps } from '../../../types/common';
 
@@ -9,15 +8,21 @@ interface Props {
 }
 
 function Categories({ categories }: Props) {
+  const initialCategory = {
+    id: '123',
+    name: 'wszystkie',
+  };
+
   return (
     <>
       <Text variant="dHeadline2" marginBottom={16}>
-        {pageContent.categoriesTitle}
+        Wybierz kategorie
       </Text>
 
       {categories.map((category) => (
         <Category category={category} key={category.id} />
       ))}
+      <Category category={initialCategory} />
     </>
   );
 }

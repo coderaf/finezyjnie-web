@@ -101,16 +101,34 @@ function CartUserAddressForm() {
                 Twoje dane
               </Text>
               <div css={styles.inputWrapper}>
-                <Input label="E-mail" name="email" type="text" placeholder="kowalski@gmail.com" />
+                <Input
+                  id="email"
+                  label="E-mail"
+                  name="email"
+                  type="text"
+                  placeholder="kowalski@gmail.com"
+                />
               </div>
               <div css={styles.inputWrapper}>
-                <Input label="Imię" name="firstName" type="text" placeholder="Jan" />
+                <Input id="firstName" label="Imię" name="firstName" type="text" placeholder="Jan" />
               </div>
               <div css={styles.inputWrapper}>
-                <Input label="Nazwisko" name="lastName" type="text" placeholder="Kowalski" />
+                <Input
+                  id="lastName"
+                  label="Nazwisko"
+                  name="lastName"
+                  type="text"
+                  placeholder="Kowalski"
+                />
               </div>
               <div css={styles.inputWrapper}>
-                <Input label="Telefon" name="phoneNumber" type="number" placeholder="111222333" />
+                <Input
+                  id="phoneNumber"
+                  label="Telefon"
+                  name="phoneNumber"
+                  type="number"
+                  placeholder="111222333"
+                />
               </div>
 
               <Text variant="dHeadline3" marginBottom={16}>
@@ -118,6 +136,7 @@ function CartUserAddressForm() {
               </Text>
               <div css={styles.inputWrapper}>
                 <Input
+                  id="street"
                   label="Ulica i nr domu"
                   name="street"
                   type="text"
@@ -125,10 +144,16 @@ function CartUserAddressForm() {
                 />
               </div>
               <div css={styles.inputWrapper}>
-                <Input label="Kod pocztowy" name="postalCode" type="text" placeholder="50-555" />
+                <Input
+                  id="postalCode"
+                  label="Kod pocztowy"
+                  name="postalCode"
+                  type="text"
+                  placeholder="50-555"
+                />
               </div>
               <div css={styles.inputWrapper}>
-                <Input label="Miasto" name="city" type="text" placeholder="Wrocław" />
+                <Input id="city" label="Miasto" name="city" type="text" placeholder="Wrocław" />
               </div>
             </div>
 
@@ -137,7 +162,7 @@ function CartUserAddressForm() {
                 Dodatkowe informacje
               </Text>
               <div css={styles.inputWrapper}>
-                <Input label="Uwagi" name="notes" type="text" isTextArea />
+                <Input id="notes" label="Uwagi" name="notes" type="text" isTextArea />
               </div>
               <div css={styles.checkboxWrapper}>
                 <Checkbox name="acceptedTerms">

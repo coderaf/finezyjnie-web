@@ -23,12 +23,11 @@ function Product() {
   });
 
   if (product) {
-    stock = product.stock - product.quantity;
-  } else {
-    stock = data?.stock;
+    stock = product.stock - product.quantity - product.reserved;
+  } else if (data) {
+    stock = data.stock - data.reserved;
   }
 
-  // todo: extract out of stock logic to a hook
   useEffect(() => {
     const product = productsInCart.find((product) => String(product.id) === productId);
 

@@ -15,7 +15,7 @@ export const updatesAndBio = (theme: Theme) => css`
 `;
 
 export const postWrapper = (theme: Theme) => css`
-  width: 55%;
+  width: 50%;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -35,7 +35,7 @@ export const titleWrapper = (theme: Theme) => css`
 `;
 
 export const bioWrapper = (theme: Theme) => css`
-  width: 45%;
+  width: 50%;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -54,8 +54,24 @@ export const bioWrapper = (theme: Theme) => css`
 
 export const bio = (theme: Theme) => css`
   text-align: left;
+  display: flex;
+  flex-direction: column;
+
+  img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    margin-bottom: 16px;
+    border-radius: 4px;
+  }
 
   @media (min-width: ${theme.breakpoints.desktop}) {
     text-align: right;
+    flex-direction: row;
+    gap: 32px;
+
+    img {
+      max-width: 250px;
+    }
   }
 `;

@@ -29,9 +29,7 @@ function CartSummary() {
   const mutation = useMutation({
     mutationFn: (newTransaction: TransactionData) => createTransaction(newTransaction),
     onSuccess: () => {
-      sessionStorage.clear();
-      localStorage.clear();
-
+      showToast('success', 'Twoje zamówienie zostało żłożone!');
       navigate(PATHS.CART_PAYMENTS, { state: { config: data } });
     },
     onError: () => {
@@ -105,10 +103,10 @@ function CartSummary() {
 
   return (
     <div css={[container, section]}>
-      <CartHeader />
+      <CartHeader isSummary />
 
       {productsInCart.map((product) => (
-        <ProductInCart key={product.id} product={product} isEditable={false} />
+        <ProductInCart key={product.id} product={product} isEditable={false} isSummary />
       ))}
 
       <div css={styles.userFormsSummary}>

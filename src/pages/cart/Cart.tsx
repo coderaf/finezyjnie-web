@@ -4,7 +4,7 @@ import * as styles from './Cart.styles';
 import { useCart } from '../../store/cartSlice/useCart';
 import Text from '../../components/Text/Text';
 import CartShipmentMethod from './components/CartShipmentMethod';
-import CartPayments from './components/CartPaymentMethod';
+import CartPaymentMethod from './components/CartPaymentMethod';
 import Button from '../../components/Button/Button';
 import { useNavigate } from 'react-router-dom';
 import { PATHS } from '../../routes/paths';
@@ -40,7 +40,7 @@ function Cart() {
 
       <div css={styles.cartPaymentsWrapper}>
         <CartShipmentMethod setShipmentPrice={setShipmentPrice} />
-        <CartPayments />
+        <CartPaymentMethod />
         {shipmentPrice && (
           <div css={styles.cartPaymentsSummary}>
             <Text variant="body20">Do zapłaty: </Text>

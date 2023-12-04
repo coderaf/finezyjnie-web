@@ -12,11 +12,8 @@ interface Props {
 }
 
 function CartShipmentMethod({ setShipmentPrice }: Props) {
-  const [shipmentMethod, setShipmentMethod] = useState<ShipmentMethod | undefined>(
-    sessionStorage.getItem('shipmentMethod')
-      ? JSON.parse(sessionStorage.getItem('shipmentMethod') as string)
-      : undefined
-  );
+  const [shipmentMethod, setShipmentMethod] = useState<ShipmentMethod | undefined>(undefined);
+  const storedShipmentMethod = sessionStorage.getItem('shipmentMethod');
 
   const { data, isPending, error } = useQuery({
     queryKey: ['shipment-methods'],
@@ -24,16 +21,16 @@ function CartShipmentMethod({ setShipmentPrice }: Props) {
   });
 
   useEffect(() => {
-    if (data && !shipmentMethod) {
+    if (data && data.length > 0 && !storedShipmentMethod) {
       setShipmentMethod(data[0]);
       setShipmentPrice(data[0].price);
       sessionStorage.setItem('shipmentMethod', JSON.stringify(data[0]));
+    } else if (data && data.length > 0 && storedShipmentMethod) {
+      const initialShipmentMethod = JSON.parse(storedShipmentMethod);
+      setShipmentMethod(initialShipmentMethod);
+      setShipmentPrice(initialShipmentMethod.price);
     }
-
-    if (data && shipmentMethod) {
-      setShipmentPrice(shipmentMethod.price);
-    }
-  }, [data, shipmentMethod]);
+  }, [data]);
 
   const handleProviderClick = (method: ShipmentMethod) => {
     setShipmentMethod(method);

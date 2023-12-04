@@ -17,7 +17,7 @@ export const globalCss = css`
   }
 
   body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Georgia', sans-serif;
   }
 
   input,

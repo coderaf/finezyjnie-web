@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
 import { Post as PostProps } from '../../api/blog/types';
 import { format } from 'date-fns';
-import * as styles from './Post.styles';
+import * as styles from './PostCard.styles';
 import Text from '../Text/Text';
 import { truncateString } from '../../utils/truncateString';
 import { useNavigate } from 'react-router-dom';
@@ -11,12 +11,10 @@ interface Props {
   post: PostProps;
 }
 
-// todo: change name to PostCard and props also
-function Post({ post }: Props): ReactElement {
+function PostCard({ post }: Props): ReactElement {
   const navigate = useNavigate();
 
   const formattedDate = format(new Date(post.createdAt), 'MMMM d, yyyy');
-  const desktopImage = post.images.large[0];
   const mobileImage = post.images.small[0];
 
   const handlePostClick = () => {
@@ -24,19 +22,19 @@ function Post({ post }: Props): ReactElement {
   };
 
   return (
-    <div css={styles.post} onClick={handlePostClick}>
-      <div css={styles.postHeader}>
+    <div css={styles.postCard} onClick={handlePostClick}>
+      <div css={styles.postCardHeader}>
         <Text variant="body16" marginBottom={8}>
           {post.title}
         </Text>
         <Text variant="body14">{formattedDate}</Text>
       </div>
-      <div css={styles.postImage(desktopImage, mobileImage)}></div>
-      <div css={styles.postContent}>
+      <div css={styles.postCardImage(mobileImage)}></div>
+      <div css={styles.postCardContent}>
         <Text variant="body16">{truncateString(post.content, 150)}</Text>
       </div>
     </div>
   );
 }
 
-export default Post;
+export default PostCard;

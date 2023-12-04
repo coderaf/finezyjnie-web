@@ -4,6 +4,7 @@ import {
   removeFromCart as removeFromCartAction,
   incrementProduct,
   setProductQuantity as setProductQuantityAction,
+  clearCart as clearCartAction,
 } from './cartSlice';
 import { Product } from '../../types/common';
 
@@ -38,6 +39,10 @@ export function useCart() {
     dispatch(setProductQuantityAction({ id, quantity }));
   };
 
+  const clearCart = () => {
+    dispatch(clearCartAction());
+  };
+
   return {
     totalProducts,
     productsInCart,
@@ -45,5 +50,6 @@ export function useCart() {
     removeFromCart,
     totalAmount: Number((totalAmount / 100).toFixed(2)),
     setProductQuantity,
+    clearCart,
   };
 }

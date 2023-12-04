@@ -6,7 +6,6 @@ import { AiOutlineMail } from 'react-icons/ai';
 import Text from '../Text/Text';
 
 function Footer() {
-  // todo: change to real data
   const socialMediaLinks = {
     facebook: 'https://www.facebook.com/profile.php?id=100063321829442',
     instagram: 'https://www.instagram.com/finezyjnie.pl/',
@@ -18,6 +17,10 @@ function Footer() {
       <div css={styles.footerContent}>
         <Text variant="body12" color="white">
           © {new Date().getFullYear()} - Developed by{' '}
+          <a href="https://coderaf.com/" target="_blank" rel="noopener noreferrer">
+            coderaf{' '}
+          </a>
+          and{' '}
           <a href="https://github.com/kj-ninja" target="_blank" rel="noopener noreferrer">
             kj-ninja
           </a>
