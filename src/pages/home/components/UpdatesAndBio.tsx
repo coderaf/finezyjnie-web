@@ -40,7 +40,9 @@ function UpdatesAndBio() {
         </div>
 
         <div css={styles.bio}>
-          <Text variant="body16" color="white">
+          <img src={require('../../../assets/images/bio.jpeg')} alt="" />
+
+          <Text variant={isMobile ? 'body16' : 'body16'} color="white">
             {pageContent.bioDescription}
           </Text>
         </div>

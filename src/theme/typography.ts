@@ -28,15 +28,15 @@ type FontWeight =
 
 const fonts: Record<string, { fontFamily: string; fontWeight: FontWeight }> = {
   light: {
-    fontFamily: 'Open Sans',
+    fontFamily: 'Georgia',
     fontWeight: '300',
   },
   regular: {
-    fontFamily: 'Open Sans',
+    fontFamily: 'Georgia',
     fontWeight: '400',
   },
   bold: {
-    fontFamily: 'Open Sans',
+    fontFamily: 'Georgia',
     fontWeight: '600',
   },
 };
