@@ -3,20 +3,26 @@ import * as styles from './CartHeader.styles';
 import Text from '../../../components/Text/Text';
 import { useMediaQueries } from '../../../hooks/useMediaQueries';
 
-function CartHeader() {
+function CartHeader({ isSummary }: { isSummary?: boolean }) {
   const { isMobile } = useMediaQueries();
+
   return (
     <>
       <div css={styles.cartHeaderTitle}>
         <Text variant={isMobile ? 'mHeadline2' : 'dHeadline2'}>Twój koszyk</Text>
       </div>
 
-      {/*todo: add Text component?*/}
       <div css={styles.cartHeaderRow}>
-        <div css={styles.cartHeaderProductTitle}>Produkt</div>
-        <div css={styles.cartHeaderQuantityTitle}>Ilość</div>
-        <div css={styles.cartHeaderPriceTitle}>Cena</div>
-        <div css={styles.cartHeaderRemoveTitle} />
+        <div css={styles.cartHeaderProductTitle}>
+          <Text variant="body16">Produkt</Text>
+        </div>
+        <div css={styles.cartHeaderQuantityTitle}>
+          <Text variant="body16">Ilość</Text>
+        </div>
+        <div css={styles.cartHeaderPriceTitle}>
+          <Text variant="body16">Cena</Text>
+        </div>
+        {!isSummary && <div css={styles.cartHeaderRemoveTitle} />}
       </div>
     </>
   );

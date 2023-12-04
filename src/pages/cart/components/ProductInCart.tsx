@@ -9,6 +9,7 @@ import { BsTrash } from 'react-icons/bs';
 interface Props {
   product: Product;
   isEditable?: boolean;
+  isSummary?: boolean;
 }
 
 function ProductInCart({ product, isEditable = true }: Props) {
@@ -54,15 +55,15 @@ function ProductInCart({ product, isEditable = true }: Props) {
           isDisabled={!isEditable}
         />
       </div>
-
       <div css={styles.productInCartPrice}>{product.displayPrice}</div>
-      <div css={styles.productInCartRemove} onClick={handleRemoveFromCart}>
-        {isEditable && (
+
+      {isEditable && (
+        <div css={styles.productInCartRemove} onClick={handleRemoveFromCart}>
           <Text variant="body16" color="error">
             <BsTrash />
           </Text>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 }

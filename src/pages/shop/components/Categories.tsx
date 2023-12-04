@@ -8,6 +8,11 @@ interface Props {
 }
 
 function Categories({ categories }: Props) {
+  const initialCategory = {
+    id: '123',
+    name: 'wszystkie',
+  };
+
   return (
     <>
       <Text variant="dHeadline2" marginBottom={16}>
@@ -17,6 +22,7 @@ function Categories({ categories }: Props) {
       {categories.map((category) => (
         <Category category={category} key={category.id} />
       ))}
+      <Category category={initialCategory} />
     </>
   );
 }

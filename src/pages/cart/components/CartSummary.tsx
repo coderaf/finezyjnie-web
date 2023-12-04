@@ -103,10 +103,10 @@ function CartSummary() {
 
   return (
     <div css={[container, section]}>
-      <CartHeader />
+      <CartHeader isSummary />
 
       {productsInCart.map((product) => (
-        <ProductInCart key={product.id} product={product} isEditable={false} />
+        <ProductInCart key={product.id} product={product} isEditable={false} isSummary />
       ))}
 
       <div css={styles.userFormsSummary}>

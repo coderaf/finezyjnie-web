@@ -8,11 +8,8 @@ import ErrorMessage from '../../../components/ErrorMessage/ErrorMessage';
 import { PaymentMethod } from '../../../api/shop/types';
 
 function CartPaymentMethod() {
-  const [paymentMethod, setPaymentMethod] = useState<PaymentMethod | undefined>(
-    sessionStorage.getItem('paymentMethod')
-      ? JSON.parse(sessionStorage.getItem('paymentMethod') as string)
-      : undefined
-  );
+  const [paymentMethod, setPaymentMethod] = useState<PaymentMethod | undefined>(undefined);
+  const storedPaymentMethod = sessionStorage.getItem('paymentMethod');
 
   const { data, isPending, error } = useQuery({
     queryKey: ['payment-methods'],
@@ -20,11 +17,13 @@ function CartPaymentMethod() {
   });
 
   useEffect(() => {
-    if (data && !paymentMethod) {
+    if (data && data.length > 0 && !storedPaymentMethod) {
       setPaymentMethod(data[0]);
       sessionStorage.setItem('paymentMethod', JSON.stringify(data[0]));
+    } else if (data && data.length > 0 && storedPaymentMethod) {
+      setPaymentMethod(JSON.parse(storedPaymentMethod));
     }
-  }, [data, paymentMethod]);
+  }, [data]);
 
   const handleProviderClick = (method: PaymentMethod) => {
     setPaymentMethod(method);

@@ -33,7 +33,7 @@ function ProductDetails({ name, description, displayPrice, onCLick, outOfStock, 
 
       {outOfStock && (
         <Text variant="body14" color="error">
-          Brak produktu na magazynie
+          Skontaktuj się z nami w celu ustalenia dostępności produktu.
         </Text>
       )}
     </div>

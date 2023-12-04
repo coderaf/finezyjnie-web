@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { container, section } from '../../styles/commonStyles';
 import * as styles from './Shop.styles';
 import Categories from './components/Categories';
@@ -11,14 +11,8 @@ import { PATHS } from '../../routes/paths';
 import { useNavigate, useParams } from 'react-router-dom';
 import { isObjectEmpty } from '../../utils/isObjectEmpty';
 
-const initialParams = {
-  page: 1,
-  pageSize: 6,
-  tag: 'promoted',
-};
-
 function Shop() {
-  const [productParams, setProductParams] = React.useState(initialParams);
+  const [productParams, setProductParams] = useState({});
   const { data: categories, isPending: isCategoriesPending } = useQuery({
     queryKey: ['categories'],
     queryFn: () => fetchCategories(),
@@ -39,13 +33,13 @@ function Shop() {
   };
 
   useEffect(() => {
-    if (!isObjectEmpty(params)) {
+    if (!isObjectEmpty(params) && params.category !== 'wszystkie') {
       setProductParams((prevParams) => ({
         ...prevParams,
         ...params,
       }));
     } else {
-      setProductParams(initialParams);
+      setProductParams({});
     }
   }, [params]);
 

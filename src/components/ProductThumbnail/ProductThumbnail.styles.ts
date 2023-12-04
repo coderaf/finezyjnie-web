@@ -7,7 +7,6 @@ export const productThumbnail = (theme: Theme) => css`
   display: flex;
   flex-direction: column;
   margin: 1em;
-  cursor: pointer;
 
   @media (max-width: ${theme.breakpoints.tablet}) {
     width: calc(100% - 2em);
@@ -17,10 +16,6 @@ export const productThumbnail = (theme: Theme) => css`
   @media (min-width: ${theme.breakpoints.desktop}) {
     width: calc(33.333% - 2em);
     min-width: 230px;
-  }
-
-  &:hover {
-    opacity: 0.8;
   }
 
   @keyframes fadeIn {
@@ -42,9 +37,14 @@ export const productThumbnailImage =
     background-position: center center;
     border: 1px solid ${theme.colors.black};
     margin-bottom: 8px;
+    cursor: pointer;
 
     @media (max-width: ${theme.breakpoints.tablet}) {
       background-image: url(${mobileImg});
+    }
+
+    &:hover {
+      opacity: 0.8;
     }
   `;
 
