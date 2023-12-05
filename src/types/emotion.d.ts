@@ -6,6 +6,7 @@ declare module '@emotion/react' {
     maxPageWidth: number;
     navHeight: number;
     footerHeight: number;
+    headerHeight: number;
   };
 
   export interface Theme {

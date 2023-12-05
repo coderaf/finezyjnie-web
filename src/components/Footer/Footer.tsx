@@ -5,13 +5,13 @@ import { AiOutlineInstagram } from 'react-icons/ai';
 import { AiOutlineMail } from 'react-icons/ai';
 import Text from '../Text/Text';
 
-function Footer() {
-  const socialMediaLinks = {
-    facebook: 'https://www.facebook.com/profile.php?id=100063321829442',
-    instagram: 'https://www.instagram.com/finezyjnie.pl/',
-    email: 'finezyjnagosia@gmail.com',
-  };
+const socialMediaLinks = {
+  facebook: 'https://www.facebook.com/profile.php?id=100063321829442',
+  instagram: 'https://www.instagram.com/finezyjnie.pl/',
+  email: 'finezyjnagosia@gmail.com',
+};
 
+function Footer() {
   return (
     <footer css={styles.footer}>
       <div css={styles.footerContent}>
