@@ -8,10 +8,11 @@ import { PATHS } from '../../routes/paths';
 function Header() {
   const navigate = useNavigate();
   const { pathname } = useLocation();
+  const homePaths = [PATHS.HOME, PATHS.BLOG, PATHS.CONTACT];
 
   return (
     <header css={[styles.header, commonStyles.container]}>
-      {pathname === PATHS.HOME && (
+      {homePaths.includes(pathname) && (
         <div
           css={styles.headerImage(
             require('../../assets/images/bg-header-desktop.jpeg'),

@@ -19,3 +19,15 @@ export const section = (theme: Theme) => css`
     padding: 32px;
   }
 `;
+
+export const homeSection = (theme: Theme) => css`
+  padding: 16px;
+  min-height: calc(
+    100vh - ${sectionMargins}px - ${theme.webDimensions.navHeight}px -
+      ${theme.webDimensions.footerHeight}px - ${theme.webDimensions.headerHeight}px
+  );
+
+  @media (min-width: ${theme.breakpoints.tablet}) {
+    padding: 32px;
+  }
+`;

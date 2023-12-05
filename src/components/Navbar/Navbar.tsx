@@ -10,12 +10,12 @@ import { ReactComponent as Logo } from '../../assets/icons/logo.svg';
 function Navbar() {
   const { pathname } = useLocation();
   const headerRef = useRef<HTMLElement>(null);
-  const isHome = pathname === PATHS.HOME;
-
   const navigate = useNavigate();
 
+  const homePaths = [PATHS.HOME, PATHS.BLOG, PATHS.CONTACT];
+
   useEffect(() => {
-    if (pathname === PATHS.HOME) {
+    if (homePaths.includes(pathname)) {
       return;
     }
 
@@ -44,20 +44,27 @@ function Navbar() {
   };
 
   return (
-    <div css={[styles.navbarWrapper, isHome && styles.homeNavbarWrapper]}>
-      <nav css={[styles.navbarSticky, isHome && styles.homeNavbar]} ref={headerRef}>
+    <div css={[styles.navbarWrapper, homePaths.includes(pathname) && styles.homeNavbarWrapper]}>
+      <nav
+        css={[styles.navbarSticky, homePaths.includes(pathname) && styles.homeNavbar]}
+        ref={headerRef}
+      >
         <div css={styles.navbar}>
-          {!isHome && (
+          {!homePaths.includes(pathname) && (
             <div css={styles.navbarLogoWrapper} onClick={() => navigate(PATHS.HOME)}>
               <Logo />
             </div>
           )}
-          <ul css={[styles.navbarList, !isHome && styles.navbarShopList]}>
-            <MenuItem label="Sklep" pathname={PATHS.SHOP} isHome={isHome} />
-            <MenuItem label="Blog" pathname={PATHS.BLOG} isHome={isHome} />
-            <MenuItem label="Kontakt" pathname={PATHS.CONTACT} isHome={isHome} />
+          <ul css={[styles.navbarList, !homePaths.includes(pathname) && styles.navbarShopList]}>
+            <MenuItem label="Sklep" pathname={PATHS.SHOP} isHome={homePaths.includes(pathname)} />
+            <MenuItem label="Blog" pathname={PATHS.BLOG} isHome={homePaths.includes(pathname)} />
+            <MenuItem
+              label="Kontakt"
+              pathname={PATHS.CONTACT}
+              isHome={homePaths.includes(pathname)}
+            />
 
-            {!isHome && (
+            {!homePaths.includes(pathname) && (
               <li onClick={handleCartClick}>
                 <ShoppingCart />
               </li>

@@ -4,6 +4,7 @@ const appDimensions: WebDimensions = {
   maxPageWidth: 1280,
   navHeight: 64,
   footerHeight: 55,
+  headerHeight: 200,
 };
 
 type DimensionsType = Record<keyof typeof appDimensions, number>;
