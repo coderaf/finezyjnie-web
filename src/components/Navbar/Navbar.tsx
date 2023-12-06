@@ -6,16 +6,17 @@ import ShoppingCart from '../ShoppingCart/ShoppingCart';
 import MenuItem from '../MenuItem/MenuItem';
 import { useNavigate } from 'react-router-dom';
 import { ReactComponent as Logo } from '../../assets/icons/logo.svg';
+import { isPathInHomePaths } from '../../utils/isPathInHomePaths';
 
 function Navbar() {
   const { pathname } = useLocation();
   const headerRef = useRef<HTMLElement>(null);
   const navigate = useNavigate();
 
-  const homePaths = [PATHS.HOME, PATHS.BLOG, PATHS.CONTACT];
+  const homePaths = [PATHS.BLOG, PATHS.CONTACT];
 
   useEffect(() => {
-    if (homePaths.includes(pathname)) {
+    if (isPathInHomePaths(pathname, homePaths)) {
       return;
     }
 
@@ -44,27 +45,45 @@ function Navbar() {
   };
 
   return (
-    <div css={[styles.navbarWrapper, homePaths.includes(pathname) && styles.homeNavbarWrapper]}>
+    <div
+      css={[
+        styles.navbarWrapper,
+        isPathInHomePaths(pathname, homePaths) && styles.homeNavbarWrapper,
+      ]}
+    >
       <nav
-        css={[styles.navbarSticky, homePaths.includes(pathname) && styles.homeNavbar]}
+        css={[styles.navbarSticky, isPathInHomePaths(pathname, homePaths) && styles.homeNavbar]}
         ref={headerRef}
       >
         <div css={styles.navbar}>
-          {!homePaths.includes(pathname) && (
+          {!isPathInHomePaths(pathname, homePaths) && (
             <div css={styles.navbarLogoWrapper} onClick={() => navigate(PATHS.HOME)}>
               <Logo />
             </div>
           )}
-          <ul css={[styles.navbarList, !homePaths.includes(pathname) && styles.navbarShopList]}>
-            <MenuItem label="Sklep" pathname={PATHS.SHOP} isHome={homePaths.includes(pathname)} />
-            <MenuItem label="Blog" pathname={PATHS.BLOG} isHome={homePaths.includes(pathname)} />
+          <ul
+            css={[
+              styles.navbarList,
+              !isPathInHomePaths(pathname, homePaths) && styles.navbarShopList,
+            ]}
+          >
+            <MenuItem
+              label="Sklep"
+              pathname={PATHS.SHOP}
+              isHome={isPathInHomePaths(pathname, homePaths)}
+            />
+            <MenuItem
+              label="Blog"
+              pathname={PATHS.BLOG}
+              isHome={isPathInHomePaths(pathname, homePaths)}
+            />
             <MenuItem
               label="Kontakt"
               pathname={PATHS.CONTACT}
-              isHome={homePaths.includes(pathname)}
+              isHome={isPathInHomePaths(pathname, homePaths)}
             />
 
-            {!homePaths.includes(pathname) && (
+            {!isPathInHomePaths(pathname, homePaths) && (
               <li onClick={handleCartClick}>
                 <ShoppingCart />
               </li>

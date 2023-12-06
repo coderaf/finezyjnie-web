@@ -29,7 +29,11 @@ function UpdatesAndBio() {
 
         {error && <ErrorMessage />}
 
-        {data?.posts.map((post) => <PostCard key={post.id} post={post} />)}
+        {data?.posts.map((post) => (
+          <div css={styles.postCardWrapper} key={post.id}>
+            <PostCard post={post} />
+          </div>
+        ))}
       </div>
 
       <div css={styles.bioWrapper}>
