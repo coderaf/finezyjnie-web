@@ -13,32 +13,27 @@ import { useCart } from '../../../store/cartSlice/useCart';
 function Product() {
   const { productId } = useParams();
   const { addToCart, productsInCart } = useCart();
-  const [outOfStock, setOutOfStock] = useState(false);
+  const [stock, setStock] = useState<number | undefined>();
   const product = productsInCart.find((product) => String(product.id) === productId);
-  let stock: number | undefined;
 
   const { data, isPending, error } = useQuery({
     queryKey: ['product', productId],
     queryFn: () => fetchProductById(productId!),
   });
 
-  if (product) {
-    stock = product.stock - product.quantity - product.reserved;
-  } else if (data) {
-    stock = data.stock - data.reserved;
-  }
-
   useEffect(() => {
-    const product = productsInCart.find((product) => String(product.id) === productId);
-
-    if (data && product && product.quantity === data.stock) {
-      setOutOfStock(true);
+    if (data) {
+      setStock(data.stock - data.reserved);
     }
 
-    if (stock === 0) {
-      setOutOfStock(true);
+    if (data && product) {
+      if (data.stock - data.reserved - product.quantity <= 0) {
+        setStock(0);
+      } else {
+        setStock(data.stock - data.reserved - product.quantity);
+      }
     }
-  }, [data, productsInCart, productId]);
+  }, [data, product]);
 
   const handleAddToCart = () => {
     data && addToCart(data);
@@ -63,7 +58,7 @@ function Product() {
             description={data.description}
             onCLick={handleAddToCart}
             stock={stock}
-            outOfStock={outOfStock}
+            outOfStock={stock === 0}
           />
         </div>
       )}
