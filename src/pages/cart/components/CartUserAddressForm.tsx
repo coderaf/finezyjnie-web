@@ -167,8 +167,11 @@ function CartUserAddressForm() {
               <div css={styles.checkboxWrapper}>
                 <Checkbox name="acceptedTerms">
                   <Text variant="body14">
-                    Zapoznałem się z <Link to={'/'}>regulaminem</Link> sklepu internetowego i
-                    akceptuję jego treści
+                    Zapoznałem się z{' '}
+                    <Link to={`${process.env.REACT_APP_API_URL}/static/tnc`} target="_blank">
+                      regulaminem
+                    </Link>{' '}
+                    sklepu internetowego i akceptuję jego treści
                   </Text>
                 </Checkbox>
               </div>
