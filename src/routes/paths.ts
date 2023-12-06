@@ -3,6 +3,7 @@ const appPathConstants = {
   SHOP: '/sklep',
   SHOP_PRODUCT: '/sklep/produkt',
   BLOG: '/blog',
+  BLOG_POST: '/blog/post',
   CONTACT: '/kontakt',
   CART: '/koszyk',
   CART_USER_INFO: '/koszyk/twoje-dane',

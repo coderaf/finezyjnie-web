@@ -1,8 +1,7 @@
 import { css, Theme } from '@emotion/react';
 
-export const postCard = (theme: Theme) => css`
+export const postCard = () => (theme: Theme) => css`
   width: 100%;
-  max-width: 450px;
   // this style is related to UpdatesAndBio section min-height
   min-height: 400px;
   display: flex;

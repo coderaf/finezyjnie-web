@@ -10,6 +10,7 @@ import Cart from '../pages/cart/Cart';
 import CartUserAddressForm from '../pages/cart/components/CartUserAddressForm';
 import CartSummary from '../pages/cart/components/CartSummary';
 import CartPayments from '../pages/cart/components/CartPayments';
+import Post from '../pages/blog/components/Post';
 
 export const routes: RouteObject[] = [
   { path: PATHS.HOME, element: <Home /> },
@@ -42,5 +43,6 @@ export const routes: RouteObject[] = [
     element: <CartPayments />,
   },
   { path: PATHS.BLOG, element: <Blog /> },
+  { path: `${PATHS.BLOG_POST}/:postId`, element: <Post /> },
   { path: PATHS.CONTACT, element: <Contact /> },
 ];
