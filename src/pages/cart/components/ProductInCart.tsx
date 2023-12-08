@@ -31,16 +31,14 @@ function ProductInCart({ product, isEditable = true, shouldFetch }: Props) {
     label: String(i),
   }));
 
-  const { data, isPending } = useQuery({
+  const { data, isPending, isFetchedAfterMount } = useQuery({
     queryKey: ['product', product.id],
     queryFn: () => fetchProductById(product.id),
     enabled: !!shouldFetch,
-    structuralSharing: false,
   });
 
   useEffect(() => {
-    console.log('data: ', data);
-    if (data && product.quantity) {
+    if (data && product.quantity && isFetchedAfterMount) {
       const availableQuantity = data.stock - data.reserved;
 
       if (availableQuantity === 0) {
