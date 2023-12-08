@@ -25,8 +25,8 @@ function Post() {
     error: blogError,
     data: blogData,
   } = useQuery({
-    queryKey: ['posts', { page: 1, pageSize: 3 }],
-    queryFn: () => fetchPosts({ page: 1, pageSize: 3 }),
+    queryKey: ['posts', { page: 1, pageSize: 4 }],
+    queryFn: () => fetchPosts({ page: 1, pageSize: 4 }),
   });
 
   const mobileImage = data?.images.small[0];
@@ -64,11 +64,15 @@ function Post() {
             Przeczytaj również
           </Text>
 
-          {blogData.posts.map((post) => (
-            <div css={styles.postCardWrapper} key={post.id}>
-              <PostCard post={post} />
-            </div>
-          ))}
+          {blogData.posts
+            .filter((post) => {
+              return post.id !== data.id;
+            })
+            .map((post) => (
+              <div css={styles.postCardWrapper} key={post.id}>
+                <PostCard post={post} />
+              </div>
+            ))}
         </div>
       )}
     </div>

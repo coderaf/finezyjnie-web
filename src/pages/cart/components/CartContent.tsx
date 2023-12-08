@@ -16,7 +16,7 @@ const CartContent = ({ productsInCart, totalAmount, shipmentPrice }: Props) => (
     <CartHeader />
 
     {productsInCart.map((product) => (
-      <ProductInCart key={product.id} product={product} />
+      <ProductInCart key={product.id} product={product} shouldFetch />
     ))}
 
     {productsInCart.length === 0 && (
